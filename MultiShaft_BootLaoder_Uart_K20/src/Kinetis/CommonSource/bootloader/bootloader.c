@@ -78,6 +78,8 @@ extern unsigned long __BOOT_STACK_ADDRESS[];
    Boot_ResetMCU,                   /* Usage Fault */
    Boot_ResetMCU,                   /* Usage Fault */
    Boot_ResetMCU                    /* Usage Fault */   
+   
+   Boot_ResetMCU                    /* Usage Fault */   
 };
 
 #if defined(__IAR_SYSTEMS_ICC__)
@@ -103,8 +105,9 @@ AddressType   address;
 AddressType   tmp_transpone;
 AddressType   crc_res;
 
-unsigned char write_buffer[256];
+
 unsigned long length;
+unsigned int a[33];
 unsigned long i;
 unsigned long enableBootMode;
 unsigned long timeout_cnt;
