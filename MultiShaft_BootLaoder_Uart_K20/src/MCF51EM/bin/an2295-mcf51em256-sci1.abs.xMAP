@@ -1,0 +1,82 @@
+
+
+#>00000400          ___heap_size (linker command file)
+#>00000400          ___stack_size (linker command file)
+#>00800000          ___RAM_ADDRESS (linker command file)
+#>00004000          ___RAM_SIZE (linker command file)
+#>00000000          ___FLASH_ADDRESS (linker command file)
+#>00040000          ___FLASH_SIZE (linker command file)
+
+# .vectors
+
+# .userram
+
+# .code
+
+# .vectortable
+  00000000 00000000 .text   VECTOR_TABLE	(mcf51xx_vectors.asm)
+  00000000 00000000 .text   VECTOR_TABLE	(mcf51xx_vectors.asm)
+  00000000 00000008 .text   .text	(mcf51xx_vectors.asm)
+
+# .text
+  0003F900 000004CC .text   .text	(main.asm)
+  0003F930 0000049C .text   @DummyFn1	(main.asm)
+  0003F930 00000000 .text   asm_startmeup	(main.asm)
+  0003F93A 00000000 .text   main	(main.asm)
+#>0003FDCC          ___ROM_AT (linker command file)
+#>0003FDCC          ___DATA_ROM (linker command file)
+
+# .data
+#>00800000          ___DATA_RAM (linker command file)
+#>00800000          __exception_table_start__ (linker command file)
+# Exception index
+  00800000 00000000         Exception Table Index	()
+#>00800000          __exception_table_end__ (linker command file)
+#>00800000          ___sinit__ (linker command file)
+# Linker generated symbols
+  00800000 00000004         static initializer	(linker generated)
+#>00800004          __START_DATA (linker command file)
+  00800004 0000010C .data   .data	(main.asm)
+#>00800110          __END_DATA (linker command file)
+#>00800110          __START_SDATA (linker command file)
+#>00800110          __END_SDATA (linker command file)
+#>00800110          ___DATA_END (linker command file)
+#>00800110          __SDA_BASE (linker command file)
+
+# .bss
+#>00800110          ___BSS_START (linker command file)
+#>00800110          __START_SBSS (linker command file)
+#>00800110          __END_SBSS (linker command file)
+#>00800110          __START_BSS (linker command file)
+#>00800110          __END_BSS (linker command file)
+#>00800110          ___BSS_END (linker command file)
+
+# .custom
+#>00800110          ___HEAP_START (linker command file)
+#>00800110          ___heap_addr (linker command file)
+#>00800510          ___HEAP_END (linker command file)
+#>00800510          ___SP_END (linker command file)
+#>00800910          ___SP_INIT (linker command file)
+#>00800910          __SP_INIT (linker command file)
+#>00800910          ___SP_AFTER_RESET (linker command file)
+#>0003FEDC          _romp_at (linker command file)
+
+# .romp
+#>0003FEDC          __S_romp (linker command file)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  00000000 00000000 00000000 .vectors   vectors
+  00000000 00000000 00000008 .vectortable vectors
+  0003F900 0003F900 00000000 .code      code
+  0003F900 0003F900 000004CC .text      code
+  00800000 00800000 00000000 .userram   userram
+  00800000 0003FDCC 00000110 .data      userram
+  00800110 00800110 00000000 .bss       userram
+  00800110 00800110 00000000 .custom    userram
+  00800110 0003FEDC 00000018 .romp      userram
+  00FF8680 00FF8680 00000020            standbyram
+
+# Link start time: Tue Jan 17 07:17:23 2012
+# Link end time: Tue Jan 17 07:17:24 2012

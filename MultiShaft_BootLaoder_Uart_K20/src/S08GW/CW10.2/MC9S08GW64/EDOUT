@@ -1,0 +1,37 @@
+../Sources\main.asm:42:error:A2309 File not found
+../Sources\main.asm:43:error:A2309 File not found
+../Sources\main.asm:70:error:A2333 Forward reference not allowed
+../Sources\main.asm:71:error:A2333 Forward reference not allowed
+../Sources\main.asm:72:error:A2333 Forward reference not allowed
+../Sources\main.asm:73:error:A2333 Forward reference not allowed
+../Sources\main.asm:74:error:A2333 Forward reference not allowed
+../Sources\main.asm:75:error:A2333 Forward reference not allowed
+../Sources\main.asm:76:error:A2333 Forward reference not allowed
+../Sources\main.asm:77:error:A2333 Forward reference not allowed
+../Sources\main.asm:79:error:A2333 Forward reference not allowed
+../Sources\main.asm:80:error:A2333 Forward reference not allowed
+../Sources\main.asm:82:error:A2333 Forward reference not allowed
+../Sources\main.asm:223:error:A2314 Expression must be absolute
+../Sources\main.asm:233:error:A2314 Expression must be absolute
+../Sources\main.asm:163:error:A2314 Expression must be absolute
+INFORMATION Macro Expansion           IF SIZE = 64 
+
+../Sources\main.asm:166:error:A2314 Expression must be absolute
+INFORMATION Macro Expansion           IF SIZE = 32 
+
+../Sources\main.asm:300:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:306:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:307:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:328:error:A2314 Expression must be absolute
+../Sources\main.asm:457:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:460:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:488:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:491:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:510:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:512:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:528:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:541:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:543:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:582:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:584:warning:A13003 Value is truncated to one byte
+../Sources\main.asm:601:error:A2314 Expression must be absolute

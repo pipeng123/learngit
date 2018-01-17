@@ -1,0 +1,72 @@
+/***********************************************************************
+*  HEADER_START
+*
+*  	   $File Name: SLFPRG-JK3.PRM$
+*      Project:        Developper's HC08 Bootloader Slave
+*      Description:    JL/JL link parameter file
+*      Platform:       HC08
+*      $Version: 6.0.6.0$
+*      $Date: Feb-22-2006$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+*  ===================================================================
+*  Copyright (c):      Freescale Semiconductor, 2004, All rights reserved.
+*
+*  ===================================================================
+*  THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+*  EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+*  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+*  ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+*  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+*  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+*  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+*  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+*  OF THE POSSIBILITY OF SUCH DAMAGE.
+*  ===================================================================
+*
+*  HEADER_END
+*/
+
+ENTRIES
+    SCIAPIREF       
+    FLBPR           
+END
+
+NAMES
+END
+ 
+SECTIONS
+    Z_RAM = READ_WRITE  0x0080 TO 0x00FF;
+    VAR_ROM = READ_ONLY 0xFA80 TO 0xFABF;   /* this must be of ERASE block size and aligned to block boundary */
+    PRT_ROM = READ_ONLY 0xFAC0 TO 0xFBFF;
+    FL1_ROM = READ_ONLY 0xFFD0 TO 0xFFDD;   /* 14 bytes in unused vector table */
+    FL2_ROM = READ_ONLY 0xFFE2 TO 0xFFF1;   /* 16 bytes in unused vector table */
+    SCI_ROM = READ_ONLY 0xFFF8 TO 0xFFF9;   /* 2 bytes in unused vector table */
+END
+
+PLACEMENT
+    APL_VECT_ROM                            INTO VAR_ROM;
+    SCI_PROT_ROM                            INTO SCI_ROM;
+    FL1_PROT_ROM                            INTO FL1_ROM;
+    FL2_PROT_ROM                            INTO FL2_ROM;
+    DEFAULT_ROM, CODE_ROM, ROM_VAR          INTO PRT_ROM;
+    DEFAULT_RAM, _DATA_ZEROPAGE, _OVERLAP, MY_ZEROPAGE   INTO  Z_RAM;
+END
+
+VECTOR ADDRESS 0xFFDE VEC16
+VECTOR ADDRESS 0xFFE0 VEC15
+
+VECTOR ADDRESS 0xFFF2 VEC6 
+VECTOR ADDRESS 0xFFF4 VEC5
+VECTOR ADDRESS 0xFFF6 VEC4
+
+VECTOR ADDRESS 0xFFFA VEC2
+VECTOR ADDRESS 0xFFFC VEC1
+VECTOR ADDRESS 0xFFFE main
+
+INIT main

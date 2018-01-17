@@ -1,0 +1,238 @@
+PROGRAM "hcs08sprg-s08gw.abs"
+
+******************************************************
+TARGET SECTION
+------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : HIWARE
+Linker      : SmartLinker V-5.0.48 Build 11346, Dec 13 2011
+
+******************************************************
+FILE SECTION
+------------------------------------------------------
+  C:/Users/b20253/workspace/hcs08sprg-s08gw/MC9S08GW64/Sources/main_asm.obj SMALL  Assembler
+
+******************************************************
+STARTUP SECTION
+------------------------------------------------------
+Entry point: 0xFD26
+Linker generated no start-up code
+
+******************************************************
+SEGMENT-ALLOCATION SECTION
+------------------------------------------------------
+Segmentname           Size Type    From       To  Name
+
+HI_ROM                  26  R      FFC0     FFE5  ROM2
+DEFAULT_ROM            1B1  R      FD00     FEB0  ROM
+NVOPT_ROM                1  R      FFBF     FFBF  NVOPTROM
+NVPROT_ROM               1  R      FFBD     FFBD  NVPROTROM
+MY_ZEROPAGE              8 R/W       C0       C7  Z_RAM
+DEFAULT_RAM             80 R/W      100      17F  RAM
+
+CODE   size:      1D9 (dec:      473)
+DATA   size:       88 (dec:      136)
+CONST  size:        0 (dec:        0)
+STRING size:        0 (dec:        0)
+
+******************************************************
+OBJECT-ALLOCATION SECTION
+------------------------------------------------------
+Type:     Name:                        Address:  Size:        Ref: Seg:
+VECTOR:             
+          &main                            FFFE      2
+
+
+MODULE:             -- C:/Users/b20253/workspace/hcs08sprg-s08gw/MC9S08GW64/Sources/main_asm.obj --
+- CODE SECTIONS: 
+          _mainDEFAULT_ROM                 FD00    1B1      (  0) DEFAULT_ROM
+          _mainHI_ROM                      FFC0     26      (  0) HI_ROM
+
+- DATA SECTIONS: 
+          _mainMY_ZEROPAGE                   C0      8      (  0) MY_ZEROPAGE
+          _mainDEFAULT_RAM                  100     80      (  0) DEFAULT_RAM
+          _mainNVPROT_ROM                  FFBD      1      (  0) NVPROT_ROM
+          _mainNVOPT_ROM                   FFBF      1      (  0) NVOPT_ROM
+
+- LABELS:        
+          main                             FD26             (  1)
+          _ADRS                              C0             ( 13)
+          _ADRR                              C2             (  3)
+          _LEN                               C4             (  5)
+          _STAT                              C5             (  5)
+          _STACK                             C6             (  4)
+          _DATA                             100             (  1)
+          _VAR00001                        FD00             (  1)
+          MY_NVPROT                        FFBD             (  0)
+          MY_NVOPT                         FFBF             (  0)
+          slfprg                           FD3E             (  0)
+          CAUGHT                           FD8D             (  0)
+          L1                               FD80             (  0)
+          L2                               FD7F             (  0)
+          READ                             FDF1             (  0)
+          ICSTRIM                          FFC0             (  1)
+          WRITE                            FDE6             (  0)
+          ERASE_COM                        FDFA             (  0)
+          WR_DATA_COM                      FE19             (  0)
+          IDENT_COM                        FDAC             (  0)
+          RD_DATA_COM                      FDCD             (  0)
+          WRITE_LOOP                       FDC4             (  0)
+          BCKGND                           FD9D             (  0)
+          MODPPAGE                         FE99             (  2)
+          WRITE1                           FDE7             (  0)
+          EraseSubEnd                      FE6B             (  1)
+          DoOnStack                        FE48             (  0)
+          WR_DATA_L1                       FE32             (  0)
+          ProgSubEnd                       FE99             (  1)
+          ChkDoneErase                     FE5F             (  0)
+          SUCC                             FD99             (  2)
+          ProgSub                          FE6B             (  0)
+          ChkDoneProg                      FE8D             (  0)
+          MODPPAGE2                        FE9F             (  0)
+          MONRXD                           FFC2             (  0)
+          BRKDONE                          FFD0             (  0)
+          CHKRXD                           FFC5             (  0)
+          OOR                              FFDF             (  0)
+          LDTRM                            FFE2             (  0)
+
+
+******************************************************
+SEGMENT USE IN OBJECT-ALLOCATION SECTION
+------------------------------------------------------
+SEGMENT "DEFAULT_RAM"
+          _mainDEFAULT_RAM                  100     80      (  0) DEFAULT_RAM
+
+SEGMENT "MY_ZEROPAGE"
+          _mainMY_ZEROPAGE                   C0      8      (  0) MY_ZEROPAGE
+
+SEGMENT "NVPROT_ROM"
+          _mainNVPROT_ROM                  FFBD      1      (  0) NVPROT_ROM
+
+SEGMENT "NVOPT_ROM"
+          _mainNVOPT_ROM                   FFBF      1      (  0) NVOPT_ROM
+
+SEGMENT "DEFAULT_ROM"
+          _mainDEFAULT_ROM                 FD00    1B1      (  0) DEFAULT_ROM
+
+SEGMENT "HI_ROM"
+          _mainHI_ROM                      FFC0     26      (  0) HI_ROM
+
+
+******************************************************
+UNUSED-OBJECTFILE-OBJECTS SECTION
+------------------------------------------------------
+NOT USED VARIABLES
+C:/Users/b20253/workspace/hcs08sprg-s08gw/MC9S08GW64/Sources/main_asm.obj:
+  _main_SEC000000
+NOT USED PROCEDURES
+C:/Users/b20253/workspace/hcs08sprg-s08gw/MC9S08GW64/Sources/main_asm.obj:
+  This_symb_has_been_depreciated
+
+******************************************************
+COPYDOWN SECTION
+------------------------------------------------------
+
+******************************************************
+OBJECT-DEPENDENCIES SECTION
+------------------------------------------------------
+_mainDEFAULT_ROM          USES
+          MODPPAGE2                        FE9F             DEFAULT_ROM
+          ChkDoneProg                      FE8D             DEFAULT_ROM
+          ProgSub                          FE6B             DEFAULT_ROM
+          SUCC                             FD99             DEFAULT_ROM
+          ChkDoneErase                     FE5F             DEFAULT_ROM
+          ProgSubEnd                       FE99             DEFAULT_ROM
+          WR_DATA_L1                       FE32             DEFAULT_ROM
+          _ADRR                              C2             MY_ZEROPAGE
+          _DATA                             100             DEFAULT_RAM
+          DoOnStack                        FE48             DEFAULT_ROM
+          EraseSubEnd                      FE6B             DEFAULT_ROM
+          _STACK                             C6             MY_ZEROPAGE
+          _STAT                              C5             MY_ZEROPAGE
+          WRITE1                           FDE7             DEFAULT_ROM
+          MODPPAGE                         FE99             DEFAULT_ROM
+          _ADRS                              C0             MY_ZEROPAGE
+          BCKGND                           FD9D             DEFAULT_ROM
+          WRITE_LOOP                       FDC4             DEFAULT_ROM
+          _VAR00001                        FD00             DEFAULT_ROM
+          _LEN                               C4             MY_ZEROPAGE
+          RD_DATA_COM                      FDCD             DEFAULT_ROM
+          IDENT_COM                        FDAC             DEFAULT_ROM
+          WR_DATA_COM                      FE19             DEFAULT_ROM
+          ERASE_COM                        FDFA             DEFAULT_ROM
+          WRITE                            FDE6             DEFAULT_ROM
+          ICSTRIM                          FFC0             HI_ROM
+          READ                             FDF1             DEFAULT_ROM
+          L2                               FD7F             DEFAULT_ROM
+          L1                               FD80             DEFAULT_ROM
+          CAUGHT                           FD8D             DEFAULT_ROM
+          slfprg                           FD3E             DEFAULT_ROM
+_mainHI_ROM               USES
+          LDTRM                            FFE2             HI_ROM
+          OOR                              FFDF             HI_ROM
+          CHKRXD                           FFC5             HI_ROM
+          BRKDONE                          FFD0             HI_ROM
+          MONRXD                           FFC2             HI_ROM
+
+******************************************************
+OBJECT LIST SORTED BY ADDRESS
+------------------------------------------------------
+          _mainMY_ZEROPAGE                   C0      8      (  0) VAR   MY_ZEROPAGE
+          _ADRS                              C0             ( 13) LABEL MY_ZEROPAGE
+          _ADRR                              C2             (  3) LABEL MY_ZEROPAGE
+          _LEN                               C4             (  5) LABEL MY_ZEROPAGE
+          _STAT                              C5             (  5) LABEL MY_ZEROPAGE
+          _STACK                             C6             (  4) LABEL MY_ZEROPAGE
+          _mainDEFAULT_RAM                  100     80      (  0) VAR   DEFAULT_RAM
+          _DATA                             100             (  1) LABEL DEFAULT_RAM
+          _mainDEFAULT_ROM                 FD00    1B1      (  0) CODE  DEFAULT_ROM
+          _VAR00001                        FD00             (  1) LABEL DEFAULT_ROM
+          main                             FD26             (  1) LABEL DEFAULT_ROM
+          slfprg                           FD3E             (  0) LABEL DEFAULT_ROM
+          L2                               FD7F             (  0) LABEL DEFAULT_ROM
+          L1                               FD80             (  0) LABEL DEFAULT_ROM
+          CAUGHT                           FD8D             (  0) LABEL DEFAULT_ROM
+          SUCC                             FD99             (  2) LABEL DEFAULT_ROM
+          BCKGND                           FD9D             (  0) LABEL DEFAULT_ROM
+          IDENT_COM                        FDAC             (  0) LABEL DEFAULT_ROM
+          WRITE_LOOP                       FDC4             (  0) LABEL DEFAULT_ROM
+          RD_DATA_COM                      FDCD             (  0) LABEL DEFAULT_ROM
+          WRITE                            FDE6             (  0) LABEL DEFAULT_ROM
+          WRITE1                           FDE7             (  0) LABEL DEFAULT_ROM
+          READ                             FDF1             (  0) LABEL DEFAULT_ROM
+          ERASE_COM                        FDFA             (  0) LABEL DEFAULT_ROM
+          WR_DATA_COM                      FE19             (  0) LABEL DEFAULT_ROM
+          WR_DATA_L1                       FE32             (  0) LABEL DEFAULT_ROM
+          DoOnStack                        FE48             (  0) LABEL DEFAULT_ROM
+          ChkDoneErase                     FE5F             (  0) LABEL DEFAULT_ROM
+          ProgSub                          FE6B             (  0) LABEL DEFAULT_ROM
+          EraseSubEnd                      FE6B             (  1) LABEL DEFAULT_ROM
+          ChkDoneProg                      FE8D             (  0) LABEL DEFAULT_ROM
+          ProgSubEnd                       FE99             (  1) LABEL DEFAULT_ROM
+          MODPPAGE                         FE99             (  2) LABEL DEFAULT_ROM
+          MODPPAGE2                        FE9F             (  0) LABEL DEFAULT_ROM
+          _mainNVPROT_ROM                  FFBD      1      (  0) VAR   NVPROT_ROM
+          MY_NVPROT                        FFBD             (  0) LABEL NVPROT_ROM
+          _mainNVOPT_ROM                   FFBF      1      (  0) VAR   NVOPT_ROM
+          MY_NVOPT                         FFBF             (  0) LABEL NVOPT_ROM
+          ICSTRIM                          FFC0             (  1) LABEL HI_ROM
+          _mainHI_ROM                      FFC0     26      (  0) CODE  HI_ROM
+          MONRXD                           FFC2             (  0) LABEL HI_ROM
+          CHKRXD                           FFC5             (  0) LABEL HI_ROM
+          BRKDONE                          FFD0             (  0) LABEL HI_ROM
+          OOR                              FFDF             (  0) LABEL HI_ROM
+          LDTRM                            FFE2             (  0) LABEL HI_ROM
+
+******************************************************
+STATISTICS SECTION
+------------------------------------------------------
+Resources needed during link section:
+-------------------------------------
+heap memory requested: 77592 bytes
+files opened and reopend: 7
+
+ExeFile:
+--------
+number of blocks to be downloaded: 5
+total size of all blocks to be downloaded: 475

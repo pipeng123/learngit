@@ -1,0 +1,49 @@
+/* This is a generic Prm File 
+   If it does not fit your needs, you may adapt it or choose an another one 
+   in the linker preference panel */
+
+/* This is a linker parameter file for the JW32 */
+   
+NAMES  END
+
+ENTRIES 
+    bl_boot_table
+    boot_table
+END
+
+SECTIONS
+    Z_RAM  = READ_WRITE  0x0060 TO 0x00FF; 
+    RAM    = READ_WRITE  0x0100 TO 0x035F;
+    USR_VECT_ROM =  READ_ONLY 0xE5C0 TO 0xE5FF;
+    VECT_ROM =      READ_ONLY 0xE600 TO 0xE7FF;
+    PROT_ROM =      READ_ONLY 0xE800 TO 0xEFFF;
+PLACEMENT
+    _DATA_ZEROPAGE          INTO Z_RAM;
+    DEFAULT_RAM             INTO  RAM;
+
+    BLVECTROM, DEFAULT_ROM  INTO  PROT_ROM;
+    VECTROM                 INTO  VECT_ROM;
+    USRVECTROM              INTO  USR_VECT_ROM;
+END
+
+STACKTOP 0x45F 
+
+VECTOR 16 VEC16
+VECTOR 15 VEC15
+VECTOR 14 VEC14
+VECTOR 13 VEC13
+VECTOR 12 VEC12
+VECTOR 11 VEC11
+VECTOR 10 VEC10
+VECTOR 9 VEC9
+VECTOR 8 VEC8
+VECTOR 7 VEC7
+VECTOR 6 VEC6
+VECTOR 5 VEC5
+VECTOR 4 VEC4
+VECTOR 3 VEC3
+VECTOR 2 VEC2
+VECTOR 1 VEC1
+VECTOR 0 _Startup
+
+

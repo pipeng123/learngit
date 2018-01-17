@@ -1,0 +1,192 @@
+
+
+
+# .abs_original_vectors
+  00000000 000001BC .abs    original_vectors	(main.c)
+
+# .abs_RAM_vector
+  000001C0 000001BC .abs    RAM_vector	(main.c)
+
+# .abs_MY_NVPROT
+  0000040D 00000001 .abs    MY_NVPROT	(main.c)
+#>FFFF8000          __IPSBAR (linker command file)
+#>00000000          __VECTOR_TABLE_BASE (linker command file)
+#>000000FF          DBUFFER_SIZE (linker command file)
+#>00000000          ___heap_size (linker command file)
+#>00000200          ___stack_size (linker command file)
+#>00800000          ___RAM_ADDRESS (linker command file)
+#>00004000          ___RAM_SIZE (linker command file)
+#>00000000          ___FLASH_ADDRESS (linker command file)
+#>00020000          ___FLASH_SIZE (linker command file)
+
+# .userram
+
+# .bootloader
+
+# .text
+  00000410 00000044 .text   vector_redirection	(main.c)
+  00000454 00000046 .text   PinDetect	(main.c)
+  0000049A 0000002E .text   putstr	(main.c)
+  000004C8 000002CC .text   main	(main.c)
+  00000794 00000002 .text   __initialize_hardware	(startcf.c)
+  00000796 00000004 .text   _ExitProcess	(startcf.c)
+  0000079A 0000007A .text   _startup	(startcf.c)
+  00000814 00000002 .text   usb_reset_event	(usb_cdc.c)
+  00000816 0000000A .text   got_line_coding	(usb_cdc.c)
+  00000820 000000D0 .text   usb_ep0_callback	(usb_cdc.c)
+  000008F0 00000032 .text   getchar	(usb_cdc.c)
+  00000922 00000010 .text   cdc_kbhit	(usb_cdc.c)
+  00000932 0000003E .text   cdc_putch	(usb_cdc.c)
+  00000970 00000012 .text   cdc_line_coding_changed	(usb_cdc.c)
+  00000982 00000020 .text   cdc_init	(usb_cdc.c)
+  000009A2 0000010C .text   cdc_process	(usb_cdc.c)
+  00000AAE 0000002E .text   usb_get_rx_pptr	(usb.c)
+  00000ADC 000000CA .text   select_tx_buf	(usb.c)
+  00000BA6 00000024 .text   usb_get_done	(usb.c)
+  00000BCA 00000022 .text   usb_ep_is_busy	(usb.c)
+  00000BEC 00000006 .text   usb_get_state	(usb.c)
+  00000BF2 00000024 .text   usb_ep_error	(usb.c)
+  00000C16 00000038 .text   send_zero_packet	(usb.c)
+  00000C4E 00000098 .text   usb_init	(usb.c)
+  00000CE6 00000054 .text   usb_stop	(usb.c)
+  00000D3A 00000224 .text   usb_setup_ep	(usb.c)
+  00000F5E 000000B4 .text   set_config	(usb.c)
+  00001012 00000070 .text   enter_default_state	(usb.c)
+  00001082 00000044 .text   usb_stop_ep_tx	(usb.c)
+  000010C6 00000042 .text   usb_stop_ep_rx	(usb.c)
+  00001108 00000062 .text   ready_ep_tx	(usb.c)
+  0000116A 00000066 .text   ready_ep_rx	(usb.c)
+  000011D0 00000058 .text   disable_ep_tx	(usb.c)
+  00001228 00000018 .text   disable_ep_rx	(usb.c)
+  00001240 0000028E .text   _usb_send	(usb.c)
+  000014CE 000000CC .text   usb_send	(usb.c)
+  0000159A 000001DE .text   _usb_receive	(usb.c)
+  00001778 000000E8 .text   usb_receive	(usb.c)
+  00001860 00000024 .text   cb_set_address	(usb.c)
+  00001884 00000342 .text   usb_stm_ctrl0	(usb.c)
+  00001BC6 0000057C .text   usb_it_handler	(usb.c)
+  00002142 00000082 .text   init_clock	(target.c)
+  000021C4 00000006 .text   _irq_restore	(target.c)
+  000021CA 00000008 .text   _irq_disable	(target.c)
+  000021D2 00000022 .text   hw_init	(target.c)
+  000021F4 00000038 .text   .text	(mcf5xxx_lo.s)
+  000021F4 00000000 .text   asm_set_ipl	(mcf5xxx_lo.s)
+  000021F4 00000000 .text   asm_set_ipl	(mcf5xxx_lo.s)
+  000021F4 00000038 .text   @DummyFn1	(mcf5xxx_lo.s)
+  00002228 00000000 .text   mcf5xxx_byterev	(mcf5xxx_lo.s)
+  0000222C 00000008 .text   get_device_descriptor	(cdc_usb_config.c)
+  00002234 00000016 .text   is_cfgd_index	(cdc_usb_config.c)
+  0000224A 00000008 .text   get_cfg_descriptor	(cdc_usb_config.c)
+  00002252 00000016 .text   is_str_index	(cdc_usb_config.c)
+  00002268 00000010 .text   get_str_descriptor	(cdc_usb_config.c)
+  00002278 0000001C .text   is_ifc_ndx	(cdc_usb_config.c)
+  00002294 00000034 .text   is_ep_ndx	(cdc_usb_config.c)
+  000022C8 00000040 .text   get_ep_descriptor	(cdc_usb_config.c)
+  00002308 00000036 .text   get_ep_rx_buffer	(cdc_usb_config.c)
+  0000233E 0000000E .text   enable_usb_pull_up	(cdc_usb_config.c)
+  0000234C 00000062 .text   Page_erase	(cfm.c)
+  000023AE 00000036 .text   SpSub	(cfm.c)
+  000023E4 00000002 .text   SpSubEnd	(cfm.c)
+  000023E6 0000006A .text   Burst_Prog	(cfm.c)
+  00002450 00000060 .text   SpSubBurst	(cfm.c)
+  000024B0 00000002 .text   SpSubBurstEnd	(cfm.c)
+  000024B2 00000012 .text   memcpy	(libc.a mem.o          )
+  000024C4 0000002C .text   __destroy_global_chain	(librt.a cf_staticinitia)
+  000024F0 0000003E .text   __ldivu__	(librt.a cf_runtime.o   )
+  0000252E 00000034 .text   __ldiv__	(librt.a cf_runtime.o   )
+  00002562 0000000C .text   _ewl_exit	(librt.a abort_exit.o   )
+  00002570 0000001C .rodata idents	(main.c)
+  0000258C 00000023 .rodata @175	(main.c)
+  000025AF 00000004 .rodata string_descriptor0	(cdc_usb_config.c)
+  000025B3 0000001E .rodata str_serial_number	(cdc_usb_config.c)
+  000025D1 00000024 .rodata str_product	(cdc_usb_config.c)
+  000025F8 0000001C .rodata usb_string_descriptors	(cdc_usb_config.c)
+  00002614 00000012 .rodata usb_device_descriptor	(cdc_usb_config.c)
+  00002626 00000043 .rodata usb_config_descriptor	(cdc_usb_config.c)
+#>0000266C          ___ROM_AT (linker command file)
+#>0000266C          ___DATA_ROM (linker command file)
+
+# .data
+#>00800200          ___DATA_RAM (linker command file)
+#>00800200          __exception_table_start__ (linker command file)
+# Exception index
+  00800200 00000000         Exception Table Index	()
+#>00800200          __exception_table_end__ (linker command file)
+#>00800200          ___sinit__ (linker command file)
+# Linker generated symbols
+  00800200 00000004         static initializer	(linker generated)
+#>00800204          __START_DATA (linker command file)
+#>00800204          __END_DATA (linker command file)
+#>00800204          __START_SDATA (linker command file)
+  00800204 00000007 .sdata  line_coding	(usb_cdc.c)
+#>0080020C          __END_SDATA (linker command file)
+#>0080020C          ___DATA_END (linker command file)
+#>0080020C          __SDA_BASE (linker command file)
+
+# .bss
+#>00800400          ___BSS_START (linker command file)
+#>00800400          __START_SBSS (linker command file)
+#>00800400          _dbuffer (linker command file)
+  008004FF 00000001 .sbss   i	(main.c)
+  00800500 00000001 .sbss   quit	(main.c)
+  00800504 00000088 .sbss   file_ptr	(main.c)
+  0080058C 00000002 .sbss   uart_state	(usb_cdc.c)
+  0080058E 00000001 .sbss   ctrl_line_state	(usb_cdc.c)
+  0080058F 00000001 .sbss   new_line_coding	(usb_cdc.c)
+  00800590 00000001 .sbss   tx_ndx	(usb_cdc.c)
+  00800594 00000020 .sbss   tx_buffer2	(usb_cdc.c)
+  008005B4 00000020 .sbss   tx_buffer1	(usb_cdc.c)
+  008005D4 00000004 .sbss   cur_tx_buffer	(usb_cdc.c)
+  008005D8 00000001 .sbss   rx_ndx	(usb_cdc.c)
+  008005D9 00000001 .sbss   rx_length	(usb_cdc.c)
+  008005DC 00000020 .sbss   rx_buffer	(usb_cdc.c)
+  008005FC 00000240 .sbss   ep_info	(usb.c)
+  0080083C 00000001 .sbss   new_address	(usb.c)
+  0080083D 00000001 .sbss   usb_state	(usb.c)
+  0080083E 00000001 .sbss   usb_current_config	(usb.c)
+  0080083F 00000020 .sbss   buf_ep31	(cdc_usb_config.c)
+  0080085F 00000020 .sbss   buf_ep30	(cdc_usb_config.c)
+  0080087F 00000008 .sbss   buf_ep01	(cdc_usb_config.c)
+  00800887 00000008 .sbss   buf_ep00	(cdc_usb_config.c)
+#>00800890          __END_SBSS (linker command file)
+#>00800890          __START_BSS (linker command file)
+  00800890 00000001 .bss    str_manufacturer	(cdc_usb_config.c)
+  00800891 00000001 .bss    str_config	(cdc_usb_config.c)
+  00800892 00000001 .bss    str_interface1	(cdc_usb_config.c)
+  00800893 00000001 .bss    str_interface2	(cdc_usb_config.c)
+  00800894 00000004 .bss    __global_destructor_chain	(librt.a cf_staticinitia)
+#>00800898          __END_BSS (linker command file)
+#>00800898          ___BSS_END (linker command file)
+
+# .custom
+#>00800A00          ___HEAP_START (linker command file)
+#>00800A00          ___heap_addr (linker command file)
+#>00800A00          ___HEAP_END (linker command file)
+#>00800A00          ___SP_END (linker command file)
+#>00800C00          ___SP_INIT (linker command file)
+#>00800C00          __BDT_BASE (linker command file)
+#>00800E00          __BDT_END (linker command file)
+#>00800C00          __SP_INIT (linker command file)
+#>00800C00          ___SP_AFTER_RESET (linker command file)
+#>0000286C          _romp_at (linker command file)
+
+# .romp
+#>0000286C          __S_romp (linker command file)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  00000000 00000000 000001BC .abs_original_vectors abs_original_vectors
+  000001C0 000001C0 000001BC .abs_RAM_vector abs_RAM_vector
+  0000040D 0000040D 00000001 .abs_MY_NVPROT abs_MY_NVPROT
+  00000410 00000410 00000000 .bootloader bootloader
+  00000410 00000410 0000225C .text      bootloader
+  00800000 00800000 000001BC            bootvector
+  00800200 00800200 00000000 .userram   userram
+  00800200 0000266C 00000200 .data      userram
+  00800400 00800400 00000600 .bss       userram
+  00800A00 00800A00 00000400 .custom    userram
+  00800E00 0000286C 00000018 .romp      userram
+
+# Link start time: Fri Sep 14 14:09:47 2012
+# Link end time: Fri Sep 14 14:09:48 2012

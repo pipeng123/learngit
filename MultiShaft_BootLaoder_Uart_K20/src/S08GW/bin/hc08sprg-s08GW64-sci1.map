@@ -1,0 +1,248 @@
+
+PROGRAM "X:\ICONN\an2295\an2295sw\src\S08GW\bin\hc08sprg-s08GW64-sci1.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+slfprg-s08gw.asm.o                      Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xFE26 (main)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+NVPROT_ROM                         1     R     0xFFBD     0xFFBD   NVPROTROM
+NVOPT_ROM                          1     R     0xFFBF     0xFFBF   NVOPTROM
+HI_ROM                            44     R     0xFFC0     0xFFEB   ROM2
+.data                            128   R/W      0x100      0x17F   RAM
+MY_ZEROPAGE                        8   R/W       0xC0       0xC7   Z_RAM
+.init                            429     R     0xFE00     0xFFAC   ROM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):         1DD (dec:      477)
+READ_WRITE (R/W):       88 (dec:      136)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xFE26   main
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- slfprg-s08gw.asm.o --
+- PROCEDURES:
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       1       1       0   .init       
+     VAR00003                                  FE02       2       2       0   .init       
+     VAR00004                                  FE04       1       1       0   .init       
+     VAR00005                                  FE05       2       2       0   .init       
+     VAR00006                                  FE07       1       1       0   .init       
+     VAR00007                                  FE08       2       2       0   .init       
+     VAR00008                                  FE0A       1       1       0   .init       
+     VAR00009                                  FE0B       2       2       0   .init       
+     VAR00010                                  FE0D       1       1       0   .init       
+     VAR00011                                  FE0E       2       2       0   .init       
+     VAR00012                                  FE10       1       1       0   .init       
+     VAR00013                                  FE11       2       2       0   .init       
+     VAR00014                                  FE13       1       1       0   .init       
+     VAR00015                                  FE14       2       2       0   .init       
+     VAR00016                                  FE16       1       1       0   .init       
+     VAR00017                                  FE17       2       2       0   .init       
+     VAR00018                                  FE19       2       2       0   .init       
+     VAR00019                                  FE1B       2       2       0   .init       
+     VAR00020                                  FE1D       2       2       0   .init       
+     VAR00021                                  FE1F       2       2       0   .init       
+     VAR00022                                  FE21       2       2       0   .init       
+     VAR00023                                  FE23       2       2       0   .init       
+     VAR00024                                  FE25       1       1       0   .init       
+     main                                      FE26      18      24       0   .init       
+     slfprg                                    FE3E      3D      61       0   .init       
+     L2                                        FE7B       1       1       0   .init       
+     L1                                        FE7C       D      13       0   .init       
+     CAUGHT                                    FE89       C      12       0   .init       
+     SUCC                                      FE95       4       4       2   .init       
+     BCKGND                                    FE99       F      15       0   .init       
+     IDENT_COM                                 FEA8      18      24       0   .init       
+     WRITE_LOOP                                FEC0       9       9       0   .init       
+     RD_DATA_COM                               FEC9      19      25       0   .init       
+     WRITE                                     FEE2       1       1       0   .init       
+     WRITE1                                    FEE3       A      10       0   .init       
+     READ                                      FEED       9       9       0   .init       
+     ERASE_COM                                 FEF6      1F      31       0   .init       
+     WR_DATA_COM                               FF15      19      25       0   .init       
+     WR_DATA_L1                                FF2E      16      22       0   .init       
+     DoOnStack                                 FF44      17      23       0   .init       
+     ChkDoneErase                              FF5B       C      12       0   .init       
+     EraseSubEnd                               FF67      22      34       1   .init       
+     ProgSub                                   FF67       0       0       0   .init       
+     ChkDoneProg                               FF89       C      12       0   .init       
+     MODPPAGE                                  FF95       6       6       2   .init       
+     ProgSubEnd                                FF95       0       0       1   .init       
+     MODPPAGE2                                 FF9B      12      18       0   .init       
+     ICSTRIM                                   FFC0       2       2       1   HI_ROM      
+     MONRXD                                    FFC2       3       3       0   HI_ROM      
+     CHKRXD                                    FFC5       B      11       0   HI_ROM      
+     BRKDONE                                   FFD0      15      21       0   HI_ROM      
+     OOR                                       FFE5       3       3       0   HI_ROM      
+     LDTRM                                     FFE8       4       4       0   HI_ROM      
+- VARIABLES:
+     ADRS                                        C0       2       2      13   MY_ZEROPAGE 
+     ADRR                                        C2       2       2       3   MY_ZEROPAGE 
+     LEN                                         C4       1       1       5   MY_ZEROPAGE 
+     STAT                                        C5       1       1       5   MY_ZEROPAGE 
+     STACK                                       C6       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      80     128       1   .data       
+     MY_NVPROT                                 FFBD       1       1       0   NVPROT_ROM  
+     MY_NVOPT                                  FFBF       1       1       0   NVOPT_ROM   
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  slfprg-s08gw.asm.o                         136    473      2
+  other                                        0      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  DATA 
+SECTION: ".init"
+  VAR00001 VAR00002 VAR00003 VAR00004 VAR00005 VAR00006 VAR00007 VAR00008 
+  VAR00009 VAR00010 VAR00011 VAR00012 VAR00013 VAR00014 VAR00015 VAR00016 
+  VAR00017 VAR00018 VAR00019 VAR00020 VAR00021 VAR00022 VAR00023 VAR00024 main 
+  slfprg L2 L1 CAUGHT SUCC BCKGND IDENT_COM WRITE_LOOP RD_DATA_COM WRITE WRITE1 
+  READ ERASE_COM WR_DATA_COM WR_DATA_L1 DoOnStack ChkDoneErase ProgSub 
+  EraseSubEnd ChkDoneProg ProgSubEnd MODPPAGE MODPPAGE2 
+SECTION: "NVPROT_ROM"
+  MY_NVPROT 
+SECTION: "NVOPT_ROM"
+  MY_NVOPT 
+SECTION: "HI_ROM"
+  ICSTRIM MONRXD CHKRXD BRKDONE OOR LDTRM 
+SECTION: "MY_ZEROPAGE"
+  ADRS ADRR LEN STAT STACK 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     ADRS                                        C0       2       2      13   MY_ZEROPAGE 
+     ADRR                                        C2       2       2       3   MY_ZEROPAGE 
+     LEN                                         C4       1       1       5   MY_ZEROPAGE 
+     STAT                                        C5       1       1       5   MY_ZEROPAGE 
+     STACK                                       C6       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      80     128       1   .data       
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       1       1       0   .init       
+     VAR00003                                  FE02       2       2       0   .init       
+     VAR00004                                  FE04       1       1       0   .init       
+     VAR00005                                  FE05       2       2       0   .init       
+     VAR00006                                  FE07       1       1       0   .init       
+     VAR00007                                  FE08       2       2       0   .init       
+     VAR00008                                  FE0A       1       1       0   .init       
+     VAR00009                                  FE0B       2       2       0   .init       
+     VAR00010                                  FE0D       1       1       0   .init       
+     VAR00011                                  FE0E       2       2       0   .init       
+     VAR00012                                  FE10       1       1       0   .init       
+     VAR00013                                  FE11       2       2       0   .init       
+     VAR00014                                  FE13       1       1       0   .init       
+     VAR00015                                  FE14       2       2       0   .init       
+     VAR00016                                  FE16       1       1       0   .init       
+     VAR00017                                  FE17       2       2       0   .init       
+     VAR00018                                  FE19       2       2       0   .init       
+     VAR00019                                  FE1B       2       2       0   .init       
+     VAR00020                                  FE1D       2       2       0   .init       
+     VAR00021                                  FE1F       2       2       0   .init       
+     VAR00022                                  FE21       2       2       0   .init       
+     VAR00023                                  FE23       2       2       0   .init       
+     VAR00024                                  FE25       1       1       0   .init       
+     main                                      FE26      18      24       0   .init       
+     slfprg                                    FE3E      3D      61       0   .init       
+     L2                                        FE7B       1       1       0   .init       
+     L1                                        FE7C       D      13       0   .init       
+     CAUGHT                                    FE89       C      12       0   .init       
+     SUCC                                      FE95       4       4       2   .init       
+     BCKGND                                    FE99       F      15       0   .init       
+     IDENT_COM                                 FEA8      18      24       0   .init       
+     WRITE_LOOP                                FEC0       9       9       0   .init       
+     RD_DATA_COM                               FEC9      19      25       0   .init       
+     WRITE                                     FEE2       1       1       0   .init       
+     WRITE1                                    FEE3       A      10       0   .init       
+     READ                                      FEED       9       9       0   .init       
+     ERASE_COM                                 FEF6      1F      31       0   .init       
+     WR_DATA_COM                               FF15      19      25       0   .init       
+     WR_DATA_L1                                FF2E      16      22       0   .init       
+     DoOnStack                                 FF44      17      23       0   .init       
+     ChkDoneErase                              FF5B       C      12       0   .init       
+     ProgSub                                   FF67       0       0       0   .init       
+     EraseSubEnd                               FF67      22      34       1   .init       
+     ChkDoneProg                               FF89       C      12       0   .init       
+     ProgSubEnd                                FF95       0       0       1   .init       
+     MODPPAGE                                  FF95       6       6       2   .init       
+     MODPPAGE2                                 FF9B      12      18       0   .init       
+     MY_NVPROT                                 FFBD       1       1       0   NVPROT_ROM  
+     MY_NVOPT                                  FFBF       1       1       0   NVOPT_ROM   
+     ICSTRIM                                   FFC0       2       2       1   HI_ROM      
+     MONRXD                                    FFC2       3       3       0   HI_ROM      
+     CHKRXD                                    FFC5       B      11       0   HI_ROM      
+     BRKDONE                                   FFD0      15      21       0   HI_ROM      
+     OOR                                       FFE5       3       3       0   HI_ROM      
+     LDTRM                                     FFE8       4       4       0   HI_ROM      
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+CAUGHT                    USES ICSTRIM 
+IDENT_COM                 USES LEN VAR00001 
+WRITE_LOOP                USES LEN 
+RD_DATA_COM               USES ADRS MODPPAGE LEN 
+ERASE_COM                 USES ADRS MODPPAGE STAT STACK EraseSubEnd 
+WR_DATA_COM               USES ADRS STAT LEN DATA ADRR 
+WR_DATA_L1                USES STAT STACK ProgSubEnd 
+DoOnStack                 USES STAT ADRS 
+ChkDoneErase              USES STACK SUCC 
+EraseSubEnd               USES ADRR ADRS LEN 
+ChkDoneProg               USES STACK SUCC 
+MODPPAGE2                 USES ADRS 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 5
+Total size of all blocks to be downloaded: 477
+

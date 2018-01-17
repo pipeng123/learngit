@@ -1,0 +1,147 @@
+*********************************************************************************************
+*********************************************************************************************
+LINKING FAILED
+The linking process failed in some stage.
+Depending on the phase the linker failed, part of the information contained in this map file may be inaccurate or wrong.
+If the linking failed before the allocation phase finished, then the addresses might be inaccurate.
+Also summary information like the code size is likely to be misleading.
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+
+PROGRAM "X:\ICONN\an2295\an2295sw\src\S08SH\bin\hc08sprg-s08sh8-tra0.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF (no debug info)
+Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+slfprg-s08sh.asm.o                      Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+
+Summary of section sizes per section type:
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- slfprg-s08sh.asm.o --
+- PROCEDURES:
+     VAR00001                                     0'Error       1       1       0   .init       
+     VAR00002                                     0'Error       2       2       0   .init       
+     VAR00003                                     0'Error       2       2       0   .init       
+     VAR00004                                     0'Error       2       2       0   .init       
+     VAR00005                                     0'Error       2       2       0   .init       
+     VAR00006                                     0'Error       2       2       0   .init       
+     VAR00007                                     0'Error       2       2       0   .init       
+     VAR00008                                     0'Error       2       2       0   .init       
+     VAR00009                                     0'Error       1       1       0   .init       
+     VAR00010                                     0'Error       1       1       0   .init       
+     VAR00011                                     0'Error       2       2       0   .init       
+     VAR00012                                     0'Error       2       2       0   .init       
+     VAR00013                                     0'Error       2       2       0   .init       
+     VAR00014                                     0'Error       2       2       0   .init       
+     main                                         0'Error      18      24       0   .init       
+     slfprg                                       0'Error      2A      42       0   .init       
+     LL2                                          0'Error       1       1       0   .init       
+     LL1                                          0'Error       7       7       0   .init       
+     VAR00015                                     0'Error       1       1       0   .init       
+     L2                                           0'Error       1       1       0   .init       
+     L1                                           0'Error       7       7       0   .init       
+     VAR00016                                     0'Error       1       1       0   .init       
+     SCIINIT                                      0'Error      12      18       0   .init       
+     CAUGHT                                       0'Error       5       5       0   .init       
+     MONRXD2                                      0'Error       3       3       0   .init       
+     CHKRXD                                       0'Error       7       7       0   .init       
+     BRKDONE                                      0'Error       2       2       0   .init       
+     SUCC                                         0'Error       5       5       0   .init       
+     BCKGND                                       0'Error       F      15       0   .init       
+     VAR00017                                     0'Error       1       1       0   .init       
+     IDENT_COM                                    0'Error      18      24       0   .init       
+     WRITE_LOOP                                   0'Error       9       9       0   .init       
+     RD_DATA_COM                                  0'Error      13      19       0   .init       
+     ERASE_COM                                    0'Error      19      25       0   .init       
+     WR_DATA_COM                                  0'Error      13      19       0   .init       
+     WR_DATA_L1                                   0'Error      19      25       0   .init       
+     WRITE                                        0'Error       D      13       0   .init       
+     SCITX0                                       0'Error       8       8       0   .init       
+     SCITX2                                       0'Error       6       6       0   .init       
+     VAR00018                                     0'Error       1       1       0   .init       
+     DATALOW                                      0'Error       4       4       0   .init       
+     SCITX1                                       0'Error       6       6       0   .init       
+     EPILOG                                       0'Error       7       7       0   .init       
+     READ                                         0'Error       3       3       0   .init       
+     SCIRXNOEDGE                                  0'Error       C      12       0   .init       
+     SCIRX1                                       0'Error       B      11       0   .init       
+     SCIRX2                                       0'Error       9       9       0   .init       
+     RXDLOW                                       0'Error      1E      30       0   .init       
+     ChkDoneErase                                 0'Error       C      12       0   .init       
+     DoOnStack                                    0'Error       9       9       0   ROM_2       
+     ProgSub                                      0'Error      22      34       0   ROM_2       
+     ChkDoneProg                                  0'Error       C      12       0   ROM_2       
+- VARIABLES:
+     ONEBIT                                       0'Error       2       2       0   MY_ZEROPAGE 
+     BITS                                         0'Error       1       1       0   MY_ZEROPAGE 
+     ADRS                                         0'Error       2       2       0   MY_ZEROPAGE 
+     ADRR                                         0'Error       2       2       0   MY_ZEROPAGE 
+     LEN                                          0'Error       1       1       0   MY_ZEROPAGE 
+     STAT                                         0'Error       1       1       0   MY_ZEROPAGE 
+     STACK                                        0'Error       2       2       0   MY_ZEROPAGE 
+     DATA                                         0'Error      40      64       0   .data       
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+NOT USED VARIABLES
+slfprg-s08sh.asm.o:
+  MY_NVPROT MY_NVOPT VAR00019 
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 0
+Total size of all blocks to be downloaded: 0
+

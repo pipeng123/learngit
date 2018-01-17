@@ -1,0 +1,3 @@
+SIZE .EQU 256
+SCI  .EQU 1
+TYPE .EQU "B"

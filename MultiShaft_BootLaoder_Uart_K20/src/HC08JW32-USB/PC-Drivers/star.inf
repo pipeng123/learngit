@@ -1,0 +1,71 @@
+[Version]
+Signature="$CHICAGO$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318} 
+Provider=%MSFT%
+DriverVer=20/10/2006, 3.1.1.0
+LayoutFile=layout.inf
+
+[SourceDisksNames]
+1=%DiskName%,,,
+ 
+[SourceDisksFiles]
+star.inf = 1
+usbser-zstar.sys = 1
+
+[Manufacturer]
+%MfgName%=ZSTAR
+
+[ZSTAR]
+%USB\VID_15A2&PID_0010.DeviceDesc%=ZSTAR.Dev, USB\VID_15A2&PID_0010 
+%USB\VID_15A2&PID_0020.DeviceDesc%=ZSTAR.Dev, USB\VID_15A2&PID_0020 
+%USB\VID_15A2&PID_0120.DeviceDesc%=ZSTAR.Dev, USB\VID_15A2&PID_0120 
+%USB\VID_15A2&PID_0024.DeviceDesc%=ZSTAR.Dev, USB\VID_15A2&PID_0024 
+%USB\VID_5538&PID_0010.DeviceDesc%=ZSTAR.Dev, USB\VID_5538&PID_0010 
+
+[DestinationDirs]
+CopyInf = 10, INF
+CopySys = 10, System32\Drivers
+
+[CopyINF]
+star.inf,star.inf,,2
+
+[CopySYS]
+usbser-zstar.sys,usbser-zstar.sys,,2
+
+[ZSTAR.Dev]
+CopyFiles=CopyInf, CopySYS
+AddReg=ZSTAR.AddReg
+
+[ZSTAR.Dev.NT]
+CopyFiles=CopyInf, CopySYS
+AddReg=ZSTAR.AddReg
+
+[ZSTAR.Dev.NT.Services]
+Addservice = ZSTAR, 0x00000002, ZSTAR.AddService
+
+[ZSTAR.AddService]
+DisplayName    = %ZSTAR.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\usbser-zstar.sys
+LoadOrderGroup = Base
+
+[ZSTAR.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser-zstar.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider" 
+
+;---------------------------------------------------------------;
+
+[Strings]
+MSFT="Freescale"
+MfgName="Freescale"
+ZSTAR.SvcDesc="Virtual Serial USB driver for Freescale USB Adapter"
+USB\VID_15A2&PID_0010.DeviceDesc="Freescale AN2295 Bootloader" 
+USB\VID_15A2&PID_0020.DeviceDesc="Freescale Communications Port" 
+USB\VID_15A2&PID_0120.DeviceDesc="ZSTAR Triaxial Demo" 
+USB\VID_15A2&PID_0024.DeviceDesc="ESTAR Triaxial Demo" 
+USB\VID_5538&PID_0010.DeviceDesc="BOOTLOADER UPDATER" 
+DiskName = "Freescale xSTAR Installation Disk"

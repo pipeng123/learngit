@@ -1,0 +1,191 @@
+
+PROGRAM "X:\ICONN\an2295\an2295sw\src\S08SV\bin\hc08sprg-s08sv8-tra0.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF (no debug info)
+Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+slfprg-s08sv.asm.o                      Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xFE11 (main)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+MY_ZEROPAGE                        8   R/W       0x80       0x87   Z_RAM
+.data                             64   R/W      0x100      0x13F   RAM
+.init                            372     R     0xFE00     0xFF73   ROM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):         176 (dec:      374)
+READ_WRITE (R/W):       48 (dec:       72)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xFE11   main
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- slfprg-s08sv.asm.o --
+- PROCEDURES:
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       2       2       0   .init       
+     VAR00003                                  FE03       2       2       0   .init       
+     VAR00004                                  FE05       2       2       0   .init       
+     VAR00005                                  FE07       2       2       0   .init       
+     VAR00006                                  FE09       2       2       0   .init       
+     VAR00007                                  FE0B       2       2       0   .init       
+     VAR00008                                  FE0D       4       4       0   .init       
+     main                                      FE11      18      24       0   .init       
+     slfprg                                    FE29      46      70       0   .init       
+     L2                                        FE6F       1       1       0   .init       
+     L1                                        FE70       D      13       0   .init       
+     VAR00009                                  FE7D       1       1       0   .init       
+     CAUGHT                                    FE7E       5       5       0   .init       
+     VAR00010                                  FE83       1       1       0   .init       
+     SUCC                                      FE84       4       4       2   .init       
+     BCKGND                                    FE88       E      14       0   .init       
+     VAR00011                                  FE96       1       1       0   .init       
+     IDENT_COM                                 FE97      18      24       0   .init       
+     WRITE_LOOP                                FEAF       9       9       0   .init       
+     RD_DATA_COM                               FEB8      12      18       0   .init       
+     WRITE                                     FECA       1       1       0   .init       
+     WRITE1                                    FECB       C      12       0   .init       
+     READ                                      FED7       B      11       0   .init       
+     ERASE_COM                                 FEE2      18      24       0   .init       
+     WR_DATA_COM                               FEFA      13      19       0   .init       
+     WR_DATA_L1                                FF0D      16      22       0   .init       
+     DoOnStack                                 FF23      17      23       0   .init       
+     ChkDoneErase                              FF3A       C      12       0   .init       
+     EraseSubEnd                               FF46      22      34       1   .init       
+     ProgSub                                   FF46       0       0       0   .init       
+     ChkDoneProg                               FF68       C      12       0   .init       
+- VARIABLES:
+     ADRS                                        80       2       2      10   MY_ZEROPAGE 
+     ADRR                                        82       2       2       3   MY_ZEROPAGE 
+     LEN                                         84       1       1       5   MY_ZEROPAGE 
+     STAT                                        85       1       1       5   MY_ZEROPAGE 
+     STACK                                       86       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      40      64       1   .data       
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  slfprg-s08sv.asm.o                          72    372      0
+  other                                        0      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  DATA 
+SECTION: ".init"
+  VAR00001 VAR00002 VAR00003 VAR00004 VAR00005 VAR00006 VAR00007 VAR00008 main 
+  slfprg L2 L1 VAR00009 CAUGHT VAR00010 SUCC BCKGND VAR00011 IDENT_COM 
+  WRITE_LOOP RD_DATA_COM WRITE WRITE1 READ ERASE_COM WR_DATA_COM WR_DATA_L1 
+  DoOnStack ChkDoneErase ProgSub EraseSubEnd ChkDoneProg ProgSubEnd 
+SECTION: "MY_ZEROPAGE"
+  ADRS ADRR LEN STAT STACK 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     ADRS                                        80       2       2      10   MY_ZEROPAGE 
+     ADRR                                        82       2       2       3   MY_ZEROPAGE 
+     LEN                                         84       1       1       5   MY_ZEROPAGE 
+     STAT                                        85       1       1       5   MY_ZEROPAGE 
+     STACK                                       86       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      40      64       1   .data       
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       2       2       0   .init       
+     VAR00003                                  FE03       2       2       0   .init       
+     VAR00004                                  FE05       2       2       0   .init       
+     VAR00005                                  FE07       2       2       0   .init       
+     VAR00006                                  FE09       2       2       0   .init       
+     VAR00007                                  FE0B       2       2       0   .init       
+     VAR00008                                  FE0D       4       4       0   .init       
+     main                                      FE11      18      24       0   .init       
+     slfprg                                    FE29      46      70       0   .init       
+     L2                                        FE6F       1       1       0   .init       
+     L1                                        FE70       D      13       0   .init       
+     VAR00009                                  FE7D       1       1       0   .init       
+     CAUGHT                                    FE7E       5       5       0   .init       
+     VAR00010                                  FE83       1       1       0   .init       
+     SUCC                                      FE84       4       4       2   .init       
+     BCKGND                                    FE88       E      14       0   .init       
+     VAR00011                                  FE96       1       1       0   .init       
+     IDENT_COM                                 FE97      18      24       0   .init       
+     WRITE_LOOP                                FEAF       9       9       0   .init       
+     RD_DATA_COM                               FEB8      12      18       0   .init       
+     WRITE                                     FECA       1       1       0   .init       
+     WRITE1                                    FECB       C      12       0   .init       
+     READ                                      FED7       B      11       0   .init       
+     ERASE_COM                                 FEE2      18      24       0   .init       
+     WR_DATA_COM                               FEFA      13      19       0   .init       
+     WR_DATA_L1                                FF0D      16      22       0   .init       
+     DoOnStack                                 FF23      17      23       0   .init       
+     ChkDoneErase                              FF3A       C      12       0   .init       
+     ProgSub                                   FF46       0       0       0   .init       
+     EraseSubEnd                               FF46      22      34       1   .init       
+     ChkDoneProg                               FF68       C      12       0   .init       
+     ProgSubEnd                                FF74       0       0       1   .init       
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+NOT USED VARIABLES
+slfprg-s08sv.asm.o:
+  MY_NVPROT MY_NVOPT 
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+IDENT_COM                 USES LEN VAR00001 
+WRITE_LOOP                USES LEN 
+RD_DATA_COM               USES ADRS LEN 
+ERASE_COM                 USES ADRS STAT STACK EraseSubEnd 
+WR_DATA_COM               USES ADRS STAT LEN DATA ADRR 
+WR_DATA_L1                USES STAT STACK ProgSubEnd 
+DoOnStack                 USES STAT ADRS 
+ChkDoneErase              USES STACK SUCC 
+EraseSubEnd               USES ADRR ADRS LEN 
+ChkDoneProg               USES STACK SUCC 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 374
+

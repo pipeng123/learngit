@@ -1,0 +1,240 @@
+/***********************************************************************
+*      $File Name: AN2295.bootloader.changelog.txt$
+*      Project:        AN2295 Developper's HC08 Bootloader change log
+*      $Version: 9.1.67.0$
+*      $Date: Sep-12-2011$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+************************************************************************/
+
+01-Jul-2003: Single-wire option implemented into QT/QY and JK/JL bootloaders. 
+             Free locations in interrupt vector tables used too. [r30323]
+
+01-Aug-2003: SR12 port done, but not tested yet at all! [r30323]
+
+16-Oct-2003: LJ12 bootloader successfully tested & prepared for release [r30323] 
+             LJ24 and ext. xtal options were not tested yet.
+
+20-Oct-2003: corrected MR8 BootLoader bug (part of application vector table has
+             been protected by FLBPR) corrected RAM allocation for exec. buffer  [r30323]
+
+20-Oct-2003: release 4.0 [r30323]
+
+19-Nov-2003: AP8/16/32/64 version created (but not yet tested) [r30323]
+
+27-Jan-2004: QT/QY + JK/JL families only: ONEBIT now correctly initializes 
+             to the default value (Bootloading will not be affected by erased private area) [r30323]
+
+28-Jan-2003: SR12 bootloader corrected and tested! Works OK now. [r30323]
+
+02-Feb-2004: AP8/16/32/64 version tested by 3rd party. Reported working. [r30323]
+
+             Major update - version 2 of protocol implemented (specially for HCS08)
+             Created port for HCS08(GB/GT)(32/60), successfully tested. [r30323]
+             
+12-Feb-2004: in AP8/16/32/64 version corrected FLS_END allocation
+             also tried to squeeze bootloader user table to minimum (80B) instead
+             of 512B (erase page size) with following warning:
+             This should work OK except one scenario: if only portion of FLASH is being
+             re-programmed (e.g. S19 without interrupt vectors = no int. vect. 
+             translation occurs) AND and these memory location are in the same (last) 
+             page as bootloader user table, the table will be erased and not restored 
+             Same backported to MR & LJ families [r30323]
+			 
+18-Feb-2004: Release/revision 5.0
+
+31-Mar-2004: AZ/AS32 version created, to be tested [r30323]
+
+08-Apr-2004: AZ/AS32 version tested, AB32 port generated based on this. Not tested yet. [r30323]
+
+09-Apr-2004: GR16 version created (as part of GR4/8 tree), minor modifications of GR4/8. Not tested.
+             QB4/8 version created, not tested yet. [r30323]
+			 
+13-Apr-2004: LJ version had incorrect SCBR setting in Ext. Xtal mode (4.9152MHz). [r30323]
+
+14-Apr-2004: LB8 version created & tested. The location of ERARNGE & PRGRNGE in ROM routines
+			       jump table is different from other HC08s. [r30323]
+			 
+16-Apr-2004: S08GT16 family added.
+			       SCIAPI documentation (sci.h in JK/JL, QY/QY, LB) updated. [r30323]
+			 
+27-Apr-2004: AB/AS/AZ32/60 family unified. For Large HC08s (with more than 1 Flash block),
+             the FC protocol version 3 has been created. It's combination of IDENT format
+             of S08 (version 2) and vector relocation for regular HC08 (version 1). All three
+             (AB/AS/AZ) were ported to protocol version 3. [r30323]
+                   
+             All bootloader code for AB/AS/AZ family is related to A-suffixed MCUs (the ones
+             with new flash type). [r30323]
+
+29-Apr-2004: GZ8/16 family added. Not yet tested.
+			       GZ60 added as a part of AB/AS/AZ32/60 tree. [r30323]
+
+07-May-2004: developed EEPROM programming routines (right now only for AZ60A family, to be
+			       extended for all other EEPROM enabled HC08s). [r30323]
+			 
+10-May-2004: removed GZ60 from ABASAZ tree (now too different from EEPROM enabled ABASAZ HC08s). [r30323]
+
+12-May-2004: corrected & tested a complete ABASAZ tree with EEPROM programming features. [r30323]
+
+03-Nov-2004: Release/revision 6.0, Freescale introduced [r30323]
+
+01-Dec-2004: GR8A version introduced (8MHz clock XTAL needed), to be tested. [r30323]
+
+05-Jun-2005: S08Rx (RD/RG/RE) family introduced and tested. RC family not included, SCI not present. [r30323]
+
+10-Jun-2005: JK/JL8 family added and preliminary tested. [r30323]
+
+14-Jun-2005: Minor typo in master PC software. [r30323]
+
+20-Jun-2005: GR8A family tested by 3rd party. Reported working. AP family cleaned up a little. [r30323]
+
+30-Jun-2005: MWCW 3.0 to MWCW 3.1 migration. [r30323]
+
+25-Jul-2005: Ported to QC family. Several versions exists: 'no-trim' that depends on factory trim @0xFFC0. Since trim value
+             is different on different ICG frequency settings, bootloader and/or application may not communicate correctly
+             with another trim value.
+             'no-trim' bootloader starts at 3.2MHz BUS clock and expects factory trim @0xFFC0 to be valid for this freq.
+             
+             There're also two auto-trim bootloader versions: 'low-trim' that works at 3.2MHz BUS clock, 'hi-trim' that 
+             operates at 6.4MHz BUS clock (5V only). [r30323]
+             
+             QC auto-trim back ported to QB family ('low-trim' only since QB has no high-speed 6.4MHz BUS clock option). 
+             All auto-trim version use own trim value that is stored on first byte of bootloader private table. It can be 
+             accessed from application by form of simple pointer, that is stored on unused memory location 0xFFF8. 
+             See example:
+             
+              #define TRIMAPIADDR 0xfff8
+              #define TRIMAPI     (*((unsigned int *)(TRIMAPIADDR)))
+              #define TRIMValue   (*((unsigned char *)TRIMAPI))
+
+
+             QY8 chip not yet supported since it also has several internal oscillator frequencies selection. This needs to be
+             backported to QY/QT bootloader tree in future.
+             
+             [r30323]
+             
+22-Aug-2005: QY/QT tree got Bump COP inside Read subroutine. This will allow to use this SCIAPI routine also in appliations
+             that have COP enabled. TO BE TESTED. [r30323]
+             
+05-Sep-2005: GZ60 family corrected no. of Flash blocks and memory allocations. GZ32 & GZ48 introduced. To be tested. [r30323]
+
+26-Sep-2005: LJ/LK24 family had incorrect RAM mapping. Also FLBPR register is in FLASH instead(!) 
+             LJ/LK24 corrections tested by 3rd party. Reported working. 
+             
+             GR family included MOV #$1C,$0033 instruction in order to correctly initialize an unused timer channel.
+             Added another optional configuration for GR8A family with COP enabled and LVI set to 3.0V.
+             [r30323]
+
+26-Sep-2005: Release/revision 7.0
+
+25-Oct-2005: AS/AZ32/60A families had incorrect interrupt vectors allocations. Corrected. [r30323]
+
+18-Jan-2006: S08AW32/48/64 family created and briefly tested. [r30323]
+
+22-Feb-2006: It has been reported that some QT/QY masksets are susceptible to unwanted
+             erasure that is described in:
+             http://www.freescale.com/files/microcontrollers/doc/errata/MSE908QY4_3L69J.pdf
+
+             No workaround so far (either use newer mask set or relocated QT/QY bootloader
+             one erase page lower in memory to avoid code at 0xFFB0-0xFFBF memory location. [r30323]
+
+22-Feb-2006: -----------------------------------------------------------------------------------------------------------------
+             MAJOR CHANGE: PIN RESET as a valid source of bootloader start has been removed from all targets since 
+               this very often caused bootloader lockup - usually when a capacitor was placed on RESET pin, 
+               * ILOP instruction at the end of bootloading caused MCU reset, 
+               * the capacitor has been discharged by internal transistor,
+               * then after reset
+               * capacitor was still tying RESET pin to low level
+               * PIN RESET was again detected as source of bootloader start and this loop again and again and again).
+               If you really need RESET as a valid source of bootloader to start (EVBs, etc.)
+               recompile your own version of bootloader with following instruction changed:
+
+              BEQ     slfprg                  ; if so, jump to self programming                
+>>>>>>>>>     AND     #%10000000              ; mask only POR RESET source      
+              BEQ     VEC0                    ; any of these sources, go to self programming
+                           
+                           needs to be changed to:
+                           
+              BEQ     slfprg                  ; if so, jump to self programming                
+>>>>>>>>>     AND     #%11000000              ; mask only POR and also PIN RESET sources
+              BEQ     VEC0                    ; any of these sources, go to self programming
+
+             [r30323]
+              
+24-Feb-2006: S08QG4/8 alpha version of bootloader ported and pre-tested. 
+             Hardware SCI version briefly pre-tested, software SCI to be tested. 
+             [r30323]
+
+09-Aug-2006: HC908JW32 USB bootloader added to project tree. 
+             Heavily tested during development of ZSTAR demo. [r30323]
+
+09-Aug-2006: Release/revision 8.0
+
+10-Oct-2006: Corrected NVPROT/FPROT mapping in S08QG family, vector redirection is now OK.
+             Software SCI version tested (only two-wire communication) [r30323]
+
+05-Jul-2007: Master hc08sprg.exe updated to version 1.0.28.0 - the Erase Sector of 768 bytes needs to
+             be handled the different way than "standard" 128/256/512 binary-sized pages. [r30323]
+
+05-Jul-2007: Alpha version of S08DZ bootloader. EEPROM programming NOT YET implemented.
+             S08DZ bootloader requires hc08sprg.exe of version 1.0.28.0 or higher (introduction of new
+             protocol version 0x06)! [r30323]
+
+05-Jul-2007: Alpha version of S08QD bootloader introduced (software SCI). To be deeply tested. [r30323]             
+             
+08-Jul-2007: GR8A bootloader changed, the PLL setting were incorrect. [r30323]  
+
+09-Aug-2007: S08LC family added, pre-tested. [r30323]
+
+16-Oct-2007: S08QE family added, pre-tested. Also master hc08sprg.exe has been updated (to version 9.0.33.0)
+             that now allows more than 64kB memory to be addressed. All Read/Write/Erase communication are using
+             24-bit addresses, so a new version of protocol (0x0A) has been made. [r30323]
+
+             S08GB/GT family updated for A-family (8/16 and 32/60). 8/16A version not yet tested. 
+             GT60A tested on M68DEMO908GB60 board (SCI1/SCI2). [r30323]
+
+07-Feb-2008: S08EL/SL family added, pre-tested. Protocol version (0x06) has been modified for long addresses
+             (similarly to protocol 0x0A). Alpha version of EEPROM programming done, also ported to S08DZ family.
+             Any previous alpha versions of DZ family should be updated to match the latest hc08sprg master
+             version 9.0.37.0 or higher. [r30323]
+
+07-Feb-2008: Release/revision 9.0
+
+14-Mar-2008: S08JM family added, pre-tested. Up to 16/32/60kB versions as of now.
+			 Updated & tested SCIAPI features also for S08QD, documentation (sci.h) updated as well.
+             Some minor code cleanup. [r30323]
+
+12-Jun-2008: S08(SH/SG)(4/8) family added, pre-tested. [r30323]
+
+13-Jun-2008: S08(SH/SG)(16/32) support added to existing S08(SH/SG)(4/8) tree.
+             S08(DZ/DV)(96/128) coded, not tested yet. 
+             S08(DZ/DV)(16-60) version updated, still alpha version. To be tested. [r30323]
+             
+06-Nov-2008: Release/revision 9.1
+
+22-May-2009: S08LH(36/64) version added, tested [r30323]
+             CFV1 support added.
+
+04-Jun-2009: S08QE(8-32) version added, not tested yet.
+             Original S08QE(64-128) renamed into QE128 folder [r30323]
+
+04-Aug-2009: S08SE(4/8) version added, not tested yet.
+             Added CFV1 source trees for QE, JM (+USB) and CN families.
+             Cleaned up TOP .mcp project. [r30323]
+
+07-Aug-2009: S08AC(8-60) added and merged with AW family. These ports are identical. 
+             Should work but was not tested = alpha.
+             S08AC(96/128) version added, also completely untested = alpha.
+             CFV1 AC family added as well. 
+             Inofficial release 9.2.1 via forums.freescale.com [r30323]
+
+03-Sep-2009: Based on forums feedback, S08AC(8-60) corrected - REL_VECT and INT_VECT were wrong 
+             AC and AW families are *almost* identical (bootloader-wise).
+             Inofficial AC/AW beta2 release via forums.freescale.com [r30323]
+
+17-Nov-2009: S08LL16 port added, alpha-tested by 3rd party. [r30323]
+             MCF52229 (first V2 ColdFire) added and alpha tested. Uses V1 protocol. [r30323]
+
+23-Nov-2009: S08SC4 port added, not tested yet. [r30323]

@@ -1,0 +1,164 @@
+###############################################################################
+#
+# IAR ELF Linker V7.20.5.7591/W32 for ARM                 15/Dec/2017  12:46:03
+# Copyright 2007-2014 IAR Systems AB.
+#
+#    Output file  =  
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Exe\MultiShaft_BootLoader_Uart_K20.out
+#    Map file     =  
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\List\MultiShaft_BootLoader_Uart_K20.map
+#    Command line =  
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj\bootloader.o
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj\crc.o
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj\flash_kinetis.o
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj\flash_kinetisRamFunc.o
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj\rs232.o
+#        -o
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Exe\MultiShaft_BootLoader_Uart_K20.out
+#        --map
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\List\MultiShaft_BootLoader_Uart_K20.map
+#        --config
+#        F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\IAR_Linker_cfg\AN2295_LinkerFile.icf
+#        --entry __main --inline --no_exceptions --merge_duplicate_sections
+#        --no_vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"P1":  place in [from 0x00000040 to 0x000003ff] |
+                [from 0x00000410 to 0x00000aff] { ro };
+"P2":  place in [from 0x20000000 to 0x200001ff] { rw };
+"P3":  place in [from 0x1fffff00 to 0x1fffffff] { section codeRam };
+"P4":  place in [from 0x00000000 to 0x0000003f] { section IntVectTable };
+"P5":  place in [from 0x00000400 to 0x0000040f] { section FlashConfig };
+
+  Section       Kind        Address   Size  Object
+  -------       ----        -------   ----  ------
+"P4":                                 0x40
+  IntVectTable  const    0x00000000   0x40  bootloader.o [1]
+                       - 0x00000040   0x40
+
+"P1", part 1 of 2:                   0x16a
+  .text         ro code  0x00000040   0x44  rs232.o [1]
+  .text         ro code  0x00000084   0xc8  flash_kinetis.o [1]
+  .text         ro code  0x0000014c   0x44  flash_kinetisRamFunc.o [1]
+  .text         ro code  0x00000190   0x1a  fpinit_M.o [4]
+                       - 0x000001aa  0x16a
+
+"P5":                                 0x10
+  FlashConfig   const    0x00000400   0x10  bootloader.o [1]
+                       - 0x00000410   0x10
+
+"P1", part 2 of 2:                   0x364
+  .text         ro code  0x00000410  0x364  bootloader.o [1]
+                       - 0x00000774  0x364
+
+"P3":                                 0x80
+  codeRam       uninit   0x1fffff00   0x80  flash_kinetis.o [1]
+                       - 0x1fffff80   0x80
+
+"P2":                                0x120
+  .bss          uninit   0x20000000  0x108  bootloader.o [1]
+  .bss          uninit   0x20000108    0xc  bootloader.o [1]
+  default       uninit   0x20000114    0xc  flash_kinetis.o [1]
+                       - 0x20000120  0x120
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                  ro code  ro data  rw data
+    ------                  -------  -------  -------
+F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj: [1]
+    bootloader.o                868       80      276
+    flash_kinetis.o             200               140
+    flash_kinetisRamFunc.o       68
+    rs232.o                      68
+    -------------------------------------------------
+    Total:                    1 204       80      416
+
+command line: [2]
+    -------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    -------------------------------------------------
+    Total:
+
+m7M_tlv.a: [4]
+    fpinit_M.o                   26
+    -------------------------------------------------
+    Total:                       26
+
+-----------------------------------------------------
+    Grand Total:              1 230       80      416
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                     Address   Size  Type      Object
+-----                     -------   ----  ----      ------
+Boot_ResetMCU          0x00000411    0xc  Code  Gb  bootloader.o [1]
+CommandObj             0x20000114    0xc  Data  Gb  flash_kinetis.o [1]
+Config                 0x00000400   0x10  Data  Gb  bootloader.o [1]
+FLASH_EraseSector      0x00000129    0xe  Code  Gb  flash_kinetis.o [1]
+FLASH_FlashCommandSequenceStart
+                       0x0000014d   0x44  Code  Gb  flash_kinetisRamFunc.o [1]
+FLASH_Initialization   0x00000085   0x1e  Code  Gb  flash_kinetis.o [1]
+FLASH_ProgramPhrase    0x000000a3   0x16  Code  Gb  flash_kinetis.o [1]
+FLASH_ProgramSectionByPhrases
+                       0x000000b9   0x70  Code  Gb  flash_kinetis.o [1]
+JumpToUserApplication  0x0000041d    0xc  Code  Gb  bootloader.o [1]
+ReadAddress            0x00000459   0x1e  Code  Lc  bootloader.o [1]
+ReadCrc                0x00000477   0x12  Code  Lc  bootloader.o [1]
+Region$$Table$$Base    0x00000000          --   Gb  - Linker created -
+Region$$Table$$Limit   0x00000000          --   Gb  - Linker created -
+SendResult             0x00000429    0xc  Code  Lc  bootloader.o [1]
+SendResultCRC          0x00000435   0x24  Code  Lc  bootloader.o [1]
+UART_GetChar           0x0000006f    0xc  Code  Gb  rs232.o [1]
+UART_Initialization    0x00000041   0x22  Code  Gb  rs232.o [1]
+UART_PutChar           0x00000063    0xc  Code  Gb  rs232.o [1]
+__BOOT_STACK_ADDRESS {Abs}
+                       0x200001f8          --   Gb  command line/config [2]
+__as_entries_start     0xffffffff          --   Gb  command line/config [2]
+__as_table_start       0xffffffff          --   Gb  command line/config [2]
+__iar_init_vfp         0x00000191         Code  Gb  fpinit_M.o [4]
+__main                 0x00000489  0x27e  Code  Gb  bootloader.o [1]
+__vector_table         0x00000000   0x40  Data  Gb  bootloader.o [1]
+address                0x20000108    0x4  Data  Gb  bootloader.o [1]
+bootloaderIdent        0x00000754   0x20  Data  Gb  bootloader.o [1]
+buffer                 0x1fffff00   0x80  Data  Gb  flash_kinetis.o [1]
+crc_res                0x2000010c    0x4  Data  Gb  bootloader.o [1]
+enableBootMode         0x20000104    0x4  Data  Gb  bootloader.o [1]
+length                 0x20000100    0x4  Data  Gb  bootloader.o [1]
+timeout_cnt            0x20000110    0x4  Data  Gb  bootloader.o [1]
+write_buffer           0x20000000  0x100  Data  Gb  bootloader.o [1]
+
+
+[1] = F:\Git\MultiShaft_BootLaoder_Uart_K20\src\Kinetis\IAR_6_4\Kinetis_K_120MHz_Release\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = m7M_tlv.a
+[5] = rt7M_tl.a
+
+  1 230 bytes of readonly  code memory
+     80 bytes of readonly  data memory
+    416 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

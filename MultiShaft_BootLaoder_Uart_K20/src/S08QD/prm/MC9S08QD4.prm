@@ -1,0 +1,65 @@
+/***********************************************************************
+*  HEADER_START
+*
+*  	   $File Name: MC9S08QD4.prm$
+*      Project:        Developper's HC08 Bootloader Slave
+*      Description:    QD link parameter file
+*      Platform:       HCS08
+*      $Version: 6.0.3.0$
+*      $Date: Feb-6-2009$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+*  ===================================================================
+*  Copyright (c):      Freescale Semiconductor, 2006, All rights reserved.
+*
+*  ===================================================================
+*  THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+*  EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+*  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+*  ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+*  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+*  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+*  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+*  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+*  OF THE POSSIBILITY OF SUCH DAMAGE.
+*  ===================================================================
+*
+*  HEADER_END
+*/
+
+ENTRIES
+	MY_NVOPT MY_NVPROT SCIAPIREF
+END
+
+NAMES
+END
+
+SECTIONS /* here all RAM/ROM areas of the device are listed. Used in PLACEMENT below. */
+  Z_RAM  = READ_WRITE 0x0060 TO 0x00AF; 
+  //RAM    = READ_WRITE 0x0100 TO 0x015F;
+  ROM    = READ_ONLY  0xFE00 TO 0xFFAD;
+  ROM3   = READ_ONLY  0xFFB0 TO 0xFFBC;   // UNUSED SPACE IN NVBACKKEY
+  NVPROTROM = READ_ONLY 0xFFBD TO 0xFFBD;
+  NVOPTROM  = READ_ONLY 0xFFBF TO 0xFFBF;
+  ROM2   = READ_ONLY  0xFFC0 TO 0xFFF7;   // UNUSED SPACE IN INT. VECTOR TABLE
+  SCI_ROM = READ_ONLY 0xFFF8 TO 0xFFFD;   /* 2 bytes in unused vector table */
+END
+
+PLACEMENT /* here all predefined and user segments are placed into the SECTIONS defined above. */
+  SCI_PROT_ROM                            INTO SCI_ROM;
+  NVPROT_ROM					INTO NVPROTROM;
+  NVOPT_ROM						INTO NVOPTROM;
+  DEFAULT_ROM                   INTO ROM;
+  ROM_2                         INTO ROM2;
+  ROM_3                         INTO ROM3;
+  _DATA_ZEROPAGE, MY_ZEROPAGE   INTO Z_RAM;
+  DEFAULT_RAM                   INTO Z_RAM;
+END
+
+VECTOR 0 main 
+INIT main

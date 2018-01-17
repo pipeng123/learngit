@@ -1,0 +1,221 @@
+
+PROGRAM "X:\ICONN\an2295\an2295sw\src\S08GBGT\bin\hc08sprg-s08gbgt60-sci1.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+slfprg-s08gbgt.asm.o                    Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xFE1C (main)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+NVPROT_ROM                         1     R     0xFFBD     0xFFBD   NVPROTROM
+NVOPT_ROM                          1     R     0xFFBF     0xFFBF   NVOPTROM
+.data                            128   R/W      0x100      0x17F   RAM
+MY_ZEROPAGE                        8   R/W       0x80       0x87   Z_RAM
+.init                            387     R     0xFE00     0xFF82   ROM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):         187 (dec:      391)
+READ_WRITE (R/W):       88 (dec:      136)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xFE1C   main
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- slfprg-s08gbgt.asm.o --
+- PROCEDURES:
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       2       2       0   .init       
+     VAR00003                                  FE03       2       2       0   .init       
+     VAR00004                                  FE05       2       2       0   .init       
+     VAR00005                                  FE07       2       2       0   .init       
+     VAR00006                                  FE09       2       2       0   .init       
+     VAR00007                                  FE0B       2       2       0   .init       
+     VAR00008                                  FE0D       2       2       0   .init       
+     VAR00009                                  FE0F       2       2       0   .init       
+     VAR00010                                  FE11       5       5       0   .init       
+     VAR00011                                  FE16       5       5       0   .init       
+     VAR00012                                  FE1B       1       1       0   .init       
+     main                                      FE1C      1B      27       0   .init       
+     slfprg                                    FE37       F      15       0   .init       
+     LOOP                                      FE46      21      33       0   .init       
+     L2                                        FE67       1       1       0   .init       
+     L1                                        FE68       7       7       0   .init       
+     VAR00013                                  FE6F       1       1       0   .init       
+     CAUGHT                                    FE70       A      10       0   .init       
+     SUCC                                      FE7A       4       4       2   .init       
+     BCKGND                                    FE7E       E      14       0   .init       
+     VAR00014                                  FE8C       1       1       0   .init       
+     IDENT_COM                                 FE8D      18      24       0   .init       
+     WRITE_LOOP                                FEA5       9       9       0   .init       
+     RD_DATA_COM                               FEAE      12      18       0   .init       
+     WRITE                                     FEC0       6       6       0   .init       
+     READ                                      FEC6       6       6       0   .init       
+     ERASE_COM                                 FECC      18      24       0   .init       
+     WR_DATA_COM                               FEE4      13      19       0   .init       
+     WR_DATA_L1                                FEF7      16      22       0   .init       
+     DoOnStack                                 FF0D      17      23       0   .init       
+     ChkDoneErase                              FF24       C      12       0   .init       
+     EraseSubEnd                               FF30      22      34       1   .init       
+     ProgSub                                   FF30       0       0       0   .init       
+     ChkDoneProg                               FF52       C      12       0   .init       
+     ICGTRIM                                   FF5E       2       2       1   .init       
+     ProgSubEnd                                FF5E       0       0       1   .init       
+     MONRXD                                    FF60       3       3       0   .init       
+     CHKRXD                                    FF63       7       7       0   .init       
+     BRKDONE                                   FF6A       F      15       0   .init       
+     SLOW                                      FF79       7       7       0   .init       
+     ICGDONE                                   FF80       2       2       0   .init       
+     OOR                                       FF82       1       1       0   .init       
+- VARIABLES:
+     ADRS                                        80       2       2      10   MY_ZEROPAGE 
+     ADRR                                        82       2       2       3   MY_ZEROPAGE 
+     LEN                                         84       1       1       5   MY_ZEROPAGE 
+     STAT                                        85       1       1       5   MY_ZEROPAGE 
+     STACK                                       86       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      80     128       1   .data       
+     NVPROT                                    FFBD       1       1       0   NVPROT_ROM  
+     NVOPT                                     FFBF       1       1       0   NVOPT_ROM   
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  slfprg-s08gbgt.asm.o                       136    387      2
+  other                                        0      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  DATA 
+SECTION: ".init"
+  VAR00001 VAR00002 VAR00003 VAR00004 VAR00005 VAR00006 VAR00007 VAR00008 
+  VAR00009 VAR00010 VAR00011 VAR00012 main slfprg LOOP L2 L1 VAR00013 CAUGHT 
+  SUCC BCKGND VAR00014 IDENT_COM WRITE_LOOP RD_DATA_COM WRITE READ ERASE_COM 
+  WR_DATA_COM WR_DATA_L1 DoOnStack ChkDoneErase ProgSub EraseSubEnd ChkDoneProg 
+  ProgSubEnd ICGTRIM MONRXD CHKRXD BRKDONE SLOW ICGDONE OOR 
+SECTION: "NVPROT_ROM"
+  NVPROT 
+SECTION: "NVOPT_ROM"
+  NVOPT 
+SECTION: "MY_ZEROPAGE"
+  ADRS ADRR LEN STAT STACK 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     ADRS                                        80       2       2      10   MY_ZEROPAGE 
+     ADRR                                        82       2       2       3   MY_ZEROPAGE 
+     LEN                                         84       1       1       5   MY_ZEROPAGE 
+     STAT                                        85       1       1       5   MY_ZEROPAGE 
+     STACK                                       86       2       2       4   MY_ZEROPAGE 
+     DATA                                       100      80     128       1   .data       
+     VAR00001                                  FE00       1       1       1   .init       
+     VAR00002                                  FE01       2       2       0   .init       
+     VAR00003                                  FE03       2       2       0   .init       
+     VAR00004                                  FE05       2       2       0   .init       
+     VAR00005                                  FE07       2       2       0   .init       
+     VAR00006                                  FE09       2       2       0   .init       
+     VAR00007                                  FE0B       2       2       0   .init       
+     VAR00008                                  FE0D       2       2       0   .init       
+     VAR00009                                  FE0F       2       2       0   .init       
+     VAR00010                                  FE11       5       5       0   .init       
+     VAR00011                                  FE16       5       5       0   .init       
+     VAR00012                                  FE1B       1       1       0   .init       
+     main                                      FE1C      1B      27       0   .init       
+     slfprg                                    FE37       F      15       0   .init       
+     LOOP                                      FE46      21      33       0   .init       
+     L2                                        FE67       1       1       0   .init       
+     L1                                        FE68       7       7       0   .init       
+     VAR00013                                  FE6F       1       1       0   .init       
+     CAUGHT                                    FE70       A      10       0   .init       
+     SUCC                                      FE7A       4       4       2   .init       
+     BCKGND                                    FE7E       E      14       0   .init       
+     VAR00014                                  FE8C       1       1       0   .init       
+     IDENT_COM                                 FE8D      18      24       0   .init       
+     WRITE_LOOP                                FEA5       9       9       0   .init       
+     RD_DATA_COM                               FEAE      12      18       0   .init       
+     WRITE                                     FEC0       6       6       0   .init       
+     READ                                      FEC6       6       6       0   .init       
+     ERASE_COM                                 FECC      18      24       0   .init       
+     WR_DATA_COM                               FEE4      13      19       0   .init       
+     WR_DATA_L1                                FEF7      16      22       0   .init       
+     DoOnStack                                 FF0D      17      23       0   .init       
+     ChkDoneErase                              FF24       C      12       0   .init       
+     ProgSub                                   FF30       0       0       0   .init       
+     EraseSubEnd                               FF30      22      34       1   .init       
+     ChkDoneProg                               FF52       C      12       0   .init       
+     ProgSubEnd                                FF5E       0       0       1   .init       
+     ICGTRIM                                   FF5E       2       2       1   .init       
+     MONRXD                                    FF60       3       3       0   .init       
+     CHKRXD                                    FF63       7       7       0   .init       
+     BRKDONE                                   FF6A       F      15       0   .init       
+     SLOW                                      FF79       7       7       0   .init       
+     ICGDONE                                   FF80       2       2       0   .init       
+     OOR                                       FF82       1       1       0   .init       
+     NVPROT                                    FFBD       1       1       0   NVPROT_ROM  
+     NVOPT                                     FFBF       1       1       0   NVOPT_ROM   
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+CAUGHT                    USES ICGTRIM 
+IDENT_COM                 USES LEN VAR00001 
+WRITE_LOOP                USES LEN 
+RD_DATA_COM               USES ADRS LEN 
+ERASE_COM                 USES ADRS STAT STACK EraseSubEnd 
+WR_DATA_COM               USES ADRS STAT LEN DATA ADRR 
+WR_DATA_L1                USES STAT STACK ProgSubEnd 
+DoOnStack                 USES STAT ADRS 
+ChkDoneErase              USES STACK SUCC 
+EraseSubEnd               USES ADRR ADRS LEN 
+ChkDoneProg               USES STACK SUCC 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 4
+Total size of all blocks to be downloaded: 391
+

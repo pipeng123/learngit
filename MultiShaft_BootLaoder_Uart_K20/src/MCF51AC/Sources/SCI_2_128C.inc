@@ -1,0 +1,3 @@
+SIZE .EQU 128
+SCI  .EQU 2
+TYPE .EQU "C" 

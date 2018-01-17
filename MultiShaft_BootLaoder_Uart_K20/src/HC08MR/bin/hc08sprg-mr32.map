@@ -1,0 +1,417 @@
+
+PROGRAM "X:\ICONN\an2295\an2295sw\src\HC08MR\bin\hc08sprg-mr32.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.37 Build 9279, Oct  7 2009
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+slfprg-mr32.asm.o                       Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xFC92 (main)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+FLB_PROT_ROM                       1     R     0xFF7E     0xFF7E   FLB_ROM
+APL_VECT_ROM                      77     R     0xFC33     0xFC7F   VAR_ROM
+MY_ZEROPAGE                       90   R/W       0x60       0xB9   Z_RAM
+.data                             64   R/W      0x100      0x13F   N_RAM
+.init                            377     R     0xFC80     0xFDF8   PRT_ROM
+.vectSeg0_vect                    46     R     0xFFD2     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):         1F5 (dec:      501)
+READ_WRITE (R/W):       9A (dec:      154)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFD2        0xFC7D   VEC22
+     0xFFD4        0xFC7A   VEC21
+     0xFFD6        0xFC77   VEC20
+     0xFFD8        0xFC74   VEC19
+     0xFFDA        0xFC71   VEC18
+     0xFFDC        0xFC6E   VEC17
+     0xFFDE        0xFC6B   VEC16
+     0xFFE0        0xFC68   VEC15
+     0xFFE2        0xFC65   VEC14
+     0xFFE4        0xFC62   VEC13
+     0xFFE6        0xFC5F   VEC12
+     0xFFE8        0xFC5C   VEC11
+     0xFFEA        0xFC59   VEC10
+     0xFFEC        0xFC56   VEC9
+     0xFFEE        0xFC53   VEC8
+     0xFFF0        0xFC50   VEC7
+     0xFFF2        0xFC4D   VEC6
+     0xFFF4        0xFC4A   VEC5
+     0xFFF6        0xFC47   VEC4
+     0xFFF8        0xFC44   VEC3
+     0xFFFA        0xFC41   VEC2
+     0xFFFC        0xFC3E   VEC1
+     0xFFFE        0xFC92   main
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- slfprg-mr32.asm.o --
+- PROCEDURES:
+     PRI                                       FC33       8       8       2   APL_VECT_ROM
+     VEC0                                      FC3B       3       3       2   APL_VECT_ROM
+     VEC1                                      FC3E       3       3       0   APL_VECT_ROM
+     VEC2                                      FC41       3       3       0   APL_VECT_ROM
+     VEC3                                      FC44       3       3       0   APL_VECT_ROM
+     VEC4                                      FC47       3       3       0   APL_VECT_ROM
+     VEC5                                      FC4A       3       3       0   APL_VECT_ROM
+     VEC6                                      FC4D       3       3       0   APL_VECT_ROM
+     VEC7                                      FC50       3       3       0   APL_VECT_ROM
+     VEC8                                      FC53       3       3       0   APL_VECT_ROM
+     VEC9                                      FC56       3       3       0   APL_VECT_ROM
+     VEC10                                     FC59       3       3       0   APL_VECT_ROM
+     VEC11                                     FC5C       3       3       0   APL_VECT_ROM
+     VEC12                                     FC5F       3       3       0   APL_VECT_ROM
+     VEC13                                     FC62       3       3       0   APL_VECT_ROM
+     VEC14                                     FC65       3       3       0   APL_VECT_ROM
+     VEC15                                     FC68       3       3       0   APL_VECT_ROM
+     VEC16                                     FC6B       3       3       0   APL_VECT_ROM
+     VEC17                                     FC6E       3       3       0   APL_VECT_ROM
+     VEC18                                     FC71       3       3       0   APL_VECT_ROM
+     VEC19                                     FC74       3       3       0   APL_VECT_ROM
+     VEC20                                     FC77       3       3       0   APL_VECT_ROM
+     VEC21                                     FC7A       3       3       0   APL_VECT_ROM
+     VEC22                                     FC7D       3       3       0   APL_VECT_ROM
+     VAR00001                                  FC80       1       1       1   .init       
+     VAR00002                                  FC81       2       2       0   .init       
+     VAR00003                                  FC83       2       2       0   .init       
+     VAR00004                                  FC85       2       2       0   .init       
+     VAR00005                                  FC87       2       2       0   .init       
+     VAR00006                                  FC89       2       2       0   .init       
+     VAR00007                                  FC8B       2       2       0   .init       
+     VAR00008                                  FC8D       5       5       0   .init       
+     ID_STRING2                                FC8D       0       0       1   .init       
+     main                                      FC92       F      15      22   .init       
+     slfprg                                    FCA1       D      13       0   .init       
+     LOOP                                      FCAE      16      22       0   .init       
+     L2                                        FCC4       1       1       0   .init       
+     L1                                        FCC5       7       7       0   .init       
+     VAR00009                                  FCCC       1       1       0   .init       
+     ENDPRG_COM                                FCCC       0       0       0   .init       
+     CAUGHT                                    FCCD       6       6       0   .init       
+     SUCC                                      FCD3       4       4       2   .init       
+     BCKGND                                    FCD7       E      14       0   .init       
+     VAR00010                                  FCE5       1       1       0   .init       
+     IDENT_COM                                 FCE6      1E      30       0   .init       
+     WRITE_LOOP                                FD04       9       9       0   .init       
+     RD_DATA_COM                               FD0D      12      18       0   .init       
+     READ                                      FD1F       6       6       0   .init       
+     WRITE                                     FD25       6       6       0   .init       
+     ERASE_COM                                 FD2B      14      20       0   .init       
+     WR_DATA_COM                               FD3F      11      17       0   .init       
+     WR_DATA_L1                                FD50      17      23       0   .init       
+     RETWR                                     FD67       6       6       1   .init       
+     CPY_PRG                                   FD6D       9       9       0   .init       
+     CPY_PRG_L1                                FD76       B      11       0   .init       
+     ERASE_ALG                                 FD81       D      13       1   .init       
+     00004L1                                   FD8E       A      10       0   .init       
+     00005L2                                   FD98       1       1       0   .init       
+     00005L1                                   FD99       C      12       0   .init       
+     00006L1                                   FDA5       9       9       0   .init       
+     00007L1                                   FDAE       6       6       0   .init       
+     WR_ALG                                    FDB4       D      13       1   .init       
+     00008L1                                   FDC1       A      10       0   .init       
+     00009L1                                   FDCB       C      12       0   .init       
+     WR_ALG_L1                                 FDD7       6       6       0   .init       
+     00010L1                                   FDDD       D      13       0   .init       
+     00011L1                                   FDEA       9       9       0   .init       
+     00012L1                                   FDF3       6       6       0   .init       
+- VARIABLES:
+     ADRS                                        60       2       2      10   MY_ZEROPAGE 
+     POM                                         62       1       1       2   MY_ZEROPAGE 
+     LEN                                         63       1       1       7   MY_ZEROPAGE 
+     STAT                                        64       1       1       5   MY_ZEROPAGE 
+     STSRSR                                      65       1       1       2   MY_ZEROPAGE 
+     STACK                                       66       2       2       4   MY_ZEROPAGE 
+     SOURCE                                      68       2       2       3   MY_ZEROPAGE 
+     PRG                                         6A      50      80       3   MY_ZEROPAGE 
+     DAT                                        100      40      64       2   .data       
+     FLBPR                                     FF7E       1       1       2   FLB_PROT_ROM
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  slfprg-mr32.asm.o                          154    454      1
+  other                                        0     46      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  DAT 
+SECTION: ".init"
+  VAR00001 VAR00002 VAR00003 VAR00004 VAR00005 VAR00006 VAR00007 ID_STRING2 
+  VAR00008 main slfprg LOOP L2 L1 ENDPRG_COM VAR00009 CAUGHT SUCC BCKGND 
+  VAR00010 IDENT_COM WRITE_LOOP RD_DATA_COM READ WRITE ERASE_COM WR_DATA_COM 
+  WR_DATA_L1 RETWR CPY_PRG CPY_PRG_L1 ERASE_ALG 00004L1 00005L2 00005L1 00006L1 
+  00007L1 WR_ALG 00008L1 00009L1 WR_ALG_L1 00010L1 00011L1 00012L1 
+SECTION: "FLB_PROT_ROM"
+  FLBPR 
+SECTION: "APL_VECT_ROM"
+  PRI VEC0 VEC1 VEC2 VEC3 VEC4 VEC5 VEC6 VEC7 VEC8 VEC9 VEC10 VEC11 VEC12 
+  VEC13 VEC14 VEC15 VEC16 VEC17 VEC18 VEC19 VEC20 VEC21 VEC22 
+SECTION: "MY_ZEROPAGE"
+  ADRS POM LEN STAT STSRSR STACK SOURCE PRG 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     ADRS                                        60       2       2      10   MY_ZEROPAGE 
+     POM                                         62       1       1       2   MY_ZEROPAGE 
+     LEN                                         63       1       1       7   MY_ZEROPAGE 
+     STAT                                        64       1       1       5   MY_ZEROPAGE 
+     STSRSR                                      65       1       1       2   MY_ZEROPAGE 
+     STACK                                       66       2       2       4   MY_ZEROPAGE 
+     SOURCE                                      68       2       2       3   MY_ZEROPAGE 
+     PRG                                         6A      50      80       3   MY_ZEROPAGE 
+     DAT                                        100      40      64       2   .data       
+     PRI                                       FC33       8       8       2   APL_VECT_ROM
+     VEC0                                      FC3B       3       3       2   APL_VECT_ROM
+     VEC1                                      FC3E       3       3       0   APL_VECT_ROM
+     VEC2                                      FC41       3       3       0   APL_VECT_ROM
+     VEC3                                      FC44       3       3       0   APL_VECT_ROM
+     VEC4                                      FC47       3       3       0   APL_VECT_ROM
+     VEC5                                      FC4A       3       3       0   APL_VECT_ROM
+     VEC6                                      FC4D       3       3       0   APL_VECT_ROM
+     VEC7                                      FC50       3       3       0   APL_VECT_ROM
+     VEC8                                      FC53       3       3       0   APL_VECT_ROM
+     VEC9                                      FC56       3       3       0   APL_VECT_ROM
+     VEC10                                     FC59       3       3       0   APL_VECT_ROM
+     VEC11                                     FC5C       3       3       0   APL_VECT_ROM
+     VEC12                                     FC5F       3       3       0   APL_VECT_ROM
+     VEC13                                     FC62       3       3       0   APL_VECT_ROM
+     VEC14                                     FC65       3       3       0   APL_VECT_ROM
+     VEC15                                     FC68       3       3       0   APL_VECT_ROM
+     VEC16                                     FC6B       3       3       0   APL_VECT_ROM
+     VEC17                                     FC6E       3       3       0   APL_VECT_ROM
+     VEC18                                     FC71       3       3       0   APL_VECT_ROM
+     VEC19                                     FC74       3       3       0   APL_VECT_ROM
+     VEC20                                     FC77       3       3       0   APL_VECT_ROM
+     VEC21                                     FC7A       3       3       0   APL_VECT_ROM
+     VEC22                                     FC7D       3       3       0   APL_VECT_ROM
+     VAR00001                                  FC80       1       1       1   .init       
+     VAR00002                                  FC81       2       2       0   .init       
+     VAR00003                                  FC83       2       2       0   .init       
+     VAR00004                                  FC85       2       2       0   .init       
+     VAR00005                                  FC87       2       2       0   .init       
+     VAR00006                                  FC89       2       2       0   .init       
+     VAR00007                                  FC8B       2       2       0   .init       
+     ID_STRING2                                FC8D       0       0       1   .init       
+     VAR00008                                  FC8D       5       5       0   .init       
+     main                                      FC92       F      15      22   .init       
+     slfprg                                    FCA1       D      13       0   .init       
+     LOOP                                      FCAE      16      22       0   .init       
+     L2                                        FCC4       1       1       0   .init       
+     L1                                        FCC5       7       7       0   .init       
+     ENDPRG_COM                                FCCC       0       0       0   .init       
+     VAR00009                                  FCCC       1       1       0   .init       
+     CAUGHT                                    FCCD       6       6       0   .init       
+     SUCC                                      FCD3       4       4       2   .init       
+     BCKGND                                    FCD7       E      14       0   .init       
+     VAR00010                                  FCE5       1       1       0   .init       
+     IDENT_COM                                 FCE6      1E      30       0   .init       
+     WRITE_LOOP                                FD04       9       9       0   .init       
+     RD_DATA_COM                               FD0D      12      18       0   .init       
+     READ                                      FD1F       6       6       0   .init       
+     WRITE                                     FD25       6       6       0   .init       
+     ERASE_COM                                 FD2B      14      20       0   .init       
+     WR_DATA_COM                               FD3F      11      17       0   .init       
+     WR_DATA_L1                                FD50      17      23       0   .init       
+     RETWR                                     FD67       6       6       1   .init       
+     CPY_PRG                                   FD6D       9       9       0   .init       
+     CPY_PRG_L1                                FD76       B      11       0   .init       
+     ERASE_ALG                                 FD81       D      13       1   .init       
+     00004L1                                   FD8E       A      10       0   .init       
+     00005L2                                   FD98       1       1       0   .init       
+     00005L1                                   FD99       C      12       0   .init       
+     00006L1                                   FDA5       9       9       0   .init       
+     00007L1                                   FDAE       6       6       0   .init       
+     WR_ALG                                    FDB4       D      13       1   .init       
+     00008L1                                   FDC1       A      10       0   .init       
+     00009L1                                   FDCB       C      12       0   .init       
+     WR_ALG_L1                                 FDD7       6       6       0   .init       
+     00010L1                                   FDDD       D      13       0   .init       
+     00011L1                                   FDEA       9       9       0   .init       
+     00012L1                                   FDF3       6       6       0   .init       
+     FLBPR                                     FF7E       1       1       2   FLB_PROT_ROM
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+VEC0                      USES VEC0 
+VEC1                      USES main 
+VEC2                      USES main 
+VEC3                      USES main 
+VEC4                      USES main 
+VEC5                      USES main 
+VEC6                      USES main 
+VEC7                      USES main 
+VEC8                      USES main 
+VEC9                      USES main 
+VEC10                     USES main 
+VEC11                     USES main 
+VEC12                     USES main 
+VEC13                     USES main 
+VEC14                     USES main 
+VEC15                     USES main 
+VEC16                     USES main 
+VEC17                     USES main 
+VEC18                     USES main 
+VEC19                     USES main 
+VEC20                     USES main 
+VEC21                     USES main 
+VEC22                     USES main 
+VAR00004                  USES PRI 
+main                      USES STSRSR VEC0 
+IDENT_COM                 USES LEN VAR00001 STSRSR PRI ID_STRING2 
+WRITE_LOOP                USES LEN 
+RD_DATA_COM               USES ADRS LEN 
+ERASE_COM                 USES ADRS ERASE_ALG SOURCE STAT PRG 
+WR_DATA_COM               USES ADRS LEN STAT DAT 
+WR_DATA_L1                USES STAT WR_ALG SOURCE STACK PRG 
+RETWR                     USES STACK SUCC 
+CPY_PRG                   USES STACK SOURCE PRG 
+CPY_PRG_L1                USES STAT STACK 
+ERASE_ALG                 USES FLBPR ADRS 
+00007L1                   USES SUCC 
+WR_ALG                    USES FLBPR ADRS 
+00009L1                   USES DAT ADRS LEN POM 
+00010L1                   USES POM 
+00012L1                   USES RETWR 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+    | 
+    +- VEC0                
+         
+ VEC22               
+ | 
+ +- main                 (see above)
+    
+ VEC21               
+ | 
+ +- main                 (see above)
+    
+ VEC20               
+ | 
+ +- main                 (see above)
+    
+ VEC19               
+ | 
+ +- main                 (see above)
+    
+ VEC18               
+ | 
+ +- main                 (see above)
+    
+ VEC17               
+ | 
+ +- main                 (see above)
+    
+ VEC16               
+ | 
+ +- main                 (see above)
+    
+ VEC15               
+ | 
+ +- main                 (see above)
+    
+ VEC14               
+ | 
+ +- main                 (see above)
+    
+ VEC13               
+ | 
+ +- main                 (see above)
+    
+ VEC12               
+ | 
+ +- main                 (see above)
+    
+ VEC11               
+ | 
+ +- main                 (see above)
+    
+ VEC10               
+ | 
+ +- main                 (see above)
+    
+ VEC9                
+ | 
+ +- main                 (see above)
+    
+ VEC8                
+ | 
+ +- main                 (see above)
+    
+ VEC7                
+ | 
+ +- main                 (see above)
+    
+ VEC6                
+ | 
+ +- main                 (see above)
+    
+ VEC5                
+ | 
+ +- main                 (see above)
+    
+ VEC4                
+ | 
+ +- main                 (see above)
+    
+ VEC3                
+ | 
+ +- main                 (see above)
+    
+ VEC2                
+ | 
+ +- main                 (see above)
+    
+ VEC1                
+ | 
+ +- main                 (see above)
+    
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 4
+Total size of all blocks to be downloaded: 501
+

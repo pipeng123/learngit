@@ -1,0 +1,2 @@
+SIZE .EQU 128
+SCI .EQU 1

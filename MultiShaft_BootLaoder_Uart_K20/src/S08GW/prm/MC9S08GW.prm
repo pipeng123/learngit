@@ -1,0 +1,65 @@
+/***********************************************************************
+*  HEADER_START
+*
+*  	   $File Name: MC9S08GW.prm$
+*      Project:        Developper's HC08 Bootloader Slave
+*      Description:    GW link parameter file
+*      Platform:       HCS08
+*      $Version: 10.0.2.0$
+*      $Date: Jan-25-2012$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+*  ===================================================================
+*  Copyright (c):      Freescale Semiconductor, 2012, All rights reserved.
+*
+*  ===================================================================
+*  THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+*  EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+*  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+*  ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+*  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+*  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+*  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+*  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+*  OF THE POSSIBILITY OF SUCH DAMAGE.
+*  ===================================================================
+*
+*  HEADER_END
+*/
+
+
+ENTRIES
+	MY_NVOPT MY_NVPROT
+END
+
+NAMES
+END
+
+
+SECTIONS /* here all RAM/ROM areas of the device are listed. Used in PLACEMENT below. */
+  Z_RAM  = READ_WRITE 0x00C0 TO 0x00FF; 
+  RAM    = READ_WRITE 0x0100 TO 0x107F;
+  ROM    = READ_ONLY  0xFE00 TO 0xFFAC;
+  ROM2   = READ_ONLY  0xFFC0 TO 0xFFFD;
+  NVPROTROM = READ_ONLY 0xFFBD TO 0xFFBD;
+  NVOPTROM  = READ_ONLY 0xFFBF TO 0xFFBF;
+END
+
+PLACEMENT /* here all predefined and user segments are placed into the SECTIONS defined above. */
+  NVPROT_ROM					INTO NVPROTROM;
+  NVOPT_ROM						INTO NVOPTROM;
+  DEFAULT_ROM                   INTO ROM;
+  HI_ROM                        INTO ROM2;
+  DEFAULT_RAM                   INTO RAM;
+  _DATA_ZEROPAGE, MY_ZEROPAGE   INTO Z_RAM;
+END
+
+
+
+VECTOR ADDRESS 0xFFFE main
+INIT main

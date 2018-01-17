@@ -1,0 +1,7 @@
+#!<cw>
+
+#change SP 0x00
+
+change 0x1897 0x00
+
+

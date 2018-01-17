@@ -1,0 +1,77 @@
+/***********************************************************************
+*  HEADER_START
+*
+*  	   $File Name: SLFPRG-QB.PRM$
+*      Project:        Developper's HC08 Bootloader Slave
+*      Description:    QB link parameter file
+*      Platform:       HC08
+*      $Version: 6.0.7.0$
+*      $Date: Jul-25-2005$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+*  ===================================================================
+*  Copyright (c):      Freescale Semiconductor, 2004, All rights reserved.
+*
+*  ===================================================================
+*  THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+*  EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+*  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+*  ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+*  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+*  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+*  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+*  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+*  OF THE POSSIBILITY OF SUCH DAMAGE.
+*  ===================================================================
+*
+*  HEADER_END
+*/
+ENTRIES
+  	FLBPR
+END
+
+NAMES
+END
+
+SECTIONS
+    Z_RAM = READ_WRITE  0x0080 TO 0x0087;
+    VAR_ROM = READ_ONLY 0xFD00 TO 0xFD3F;   /* this must be of ERASE block size and aligned to block boundary */
+    PRT_ROM = READ_ONLY 0xFD40 TO 0xFDFF;
+    FL0_ROM = READ_ONLY 0xFFB0 TO 0xFFBD;   /* 14 bytes */
+    FLB_ROM = READ_ONLY 0xFFBE TO 0xFFBE;   /* 1 byte */
+    FL1_ROM = READ_ONLY 0xFFC1 TO 0xFFDD;   /* 29 bytes */
+END
+
+PLACEMENT
+    FL0_PROT_ROM               				      INTO FL0_ROM;
+    FLB_PROT_ROM                            INTO FLB_ROM;
+    DEFAULT_ROM, FL1_PROT_ROM               INTO FL1_ROM;
+    APL_VECT_ROM                            INTO VAR_ROM;
+    CODE_ROM, ROM_VAR				                INTO PRT_ROM;
+    DEFAULT_RAM, _OVERLAP, MY_ZEROPAGE      INTO Z_RAM;
+END
+
+VECTOR ADDRESS 0xFFDE VEC16
+VECTOR ADDRESS 0xFFE0 VEC15
+VECTOR ADDRESS 0xFFE2 VEC14
+VECTOR ADDRESS 0xFFE4 VEC13
+VECTOR ADDRESS 0xFFE6 VEC12
+VECTOR ADDRESS 0xFFE8 VEC11
+VECTOR ADDRESS 0xFFEA VEC10
+VECTOR ADDRESS 0xFFEC VEC9
+VECTOR ADDRESS 0xFFEE VEC8
+VECTOR ADDRESS 0xFFF0 VEC7
+VECTOR ADDRESS 0xFFF2 VEC6
+VECTOR ADDRESS 0xFFF4 VEC5
+VECTOR ADDRESS 0xFFF6 VEC4
+VECTOR ADDRESS 0xFFF8 VEC3
+VECTOR ADDRESS 0xFFFA VEC2
+VECTOR ADDRESS 0xFFFC VEC1
+VECTOR ADDRESS 0xFFFE main
+
+INIT main

@@ -1,0 +1,44 @@
+ ENTRIES
+  
+   bl_boot_table
+   boot_table
+   
+END
+
+NAMES
+END
+
+SECTIONS 
+ 
+       
+         Z_RAM                    =  READ_WRITE   0x00BB TO 0x00FF;
+         RAM                      =  READ_WRITE   0x0100 TO 0x06AF; 
+         RAM1                     =  READ_WRITE   0x1860 TO 0x195F;
+                                         
+                                        
+         USR_VECT_ROM             =  READ_ONLY    0xE5C0 TO 0xE5FF;
+         VECT_ROM                 =  READ_ONLY    0xE7BF TO 0xE7FD; // must be in one erase page block
+         PROT_ROM                 =  READ_ONLY    0xE800 TO 0xFFAF;
+         BVECT_ROM                =  READ_ONLY    0xFFC0 TO 0xFFFD;
+ 
+END
+
+PLACEMENT 
+    DEFAULT_RAM                                     INTO  RAM,RAM1;
+    
+    DEFAULT_ROM, ROM_VAR, STRINGS                   INTO  PROT_ROM;
+
+    _DATA_ZEROPAGE, MY_ZEROPAGE                     INTO  Z_RAM;
+    VECTROM                                         INTO  VECT_ROM;
+    BLVECTROM                                       INTO  BVECT_ROM;
+    USRVECTROM                                      INTO  USR_VECT_ROM;
+END
+
+
+STACKTOP 0x8AF 
+
+       
+VECTOR 0 _Startup 
+
+
+

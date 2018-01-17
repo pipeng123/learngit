@@ -1,0 +1,726 @@
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+    1    1                      ;*********************************************************************
+    2    2                      ; HEADER_START
+    3    3                      ;
+    4    4                      ;        $File Name: slfprg-mr32.asm$
+    5    5                      ;      Project:        Developper's HC08 Bootloader Slave
+    6    6                      ;      Description:    MR main bootloader file
+    7    7                      ;      Platform:       HC08
+    8    8                      ;      $Version: 6.0.16.0$
+    9    9                      ;      $Date: Oct-11-2011$ 
+   10   10                      ;      $Last Modified By: B20253$
+   11   11                      ;      Company:        Freescale Semiconductor
+   12   12                      ;      Security:       General Business
+   13   13                      ;
+   14   14                      ; =================================================================== 
+   15   15                      ; Copyright (c):      Freescale Semiconductor, 2004, All rights reserved.
+   16   16                      ;
+   17   17                      ; =================================================================== 
+   18   18                      ; THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+   19   19                      ; EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   20   20                      ; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   21   21                      ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+   22   22                      ; ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   23   23                      ; SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+   24   24                      ; NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+   25   25                      ; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   26   26                      ; HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+   27   27                      ; STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   28   28                      ; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+   29   29                      ; OF THE POSSIBILITY OF SUCH DAMAGE.
+   30   30                      ; ===================================================================
+   31   31                      ;
+   32   32                      ; HEADER_END
+   33   33                      
+   34   34                      ; label SIZE defined externally:
+   35   35                      ; SIZE = 4, 8 or 32 for MR4, MR8 and MR32 respectively
+   36   36                      
+   37   37                          include "reg-mr32.h"
+   38    1i                     ;*********************************************************************
+   39    2i                     ; HEADER_START
+   40    3i                     ;
+   41    4i                     ;        $File Name: REG-MR32.H$
+   42    5i                     ;      Project:        Developper's HC08 Bootloader Slave
+   43    6i                     ;      Description:    MR header file (may not be complete)
+   44    7i                     ;      Platform:       HC08
+   45    8i                     ;      $Version: 6.0.4.0$
+   46    9i                     ;      $Date: Oct-11-2011$ 
+   47   10i                     ;      $Last Modified By: B20253$
+   48   11i                     ;      Company:        Freescale Semiconductor
+   49   12i                     ;      Security:       General Business
+   50   13i                     ;
+   51   14i                     ; =================================================================== 
+   52   15i                     ; Copyright (c):      Freescale Semiconductor, 2004, All rights reserved.
+   53   16i                     ;
+   54   17i                     ; =================================================================== 
+   55   18i                     ; THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+   56   19i                     ; EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   57   20i                     ; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   58   21i                     ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+   59   22i                     ; ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   60   23i                     ; SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+   61   24i                     ; NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+   62   25i                     ; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   63   26i                     ; HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+   64   27i                     ; STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+   65   28i                     ; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+   66   29i                     ; OF THE POSSIBILITY OF SUCH DAMAGE.
+   67   30i                     ; ===================================================================
+   68   31i                     ;
+   69   32i                     ; HEADER_END
+   70   33i                     
+   71   34i         0000 0001      ifndef   _REG_H
+   72   35i         0000 0001   _REG_H   equ   1
+   73   36i                     
+   74   37i                     ;***********************
+   75   38i                     ; PORTS SECTION
+   76   39i                     ;***********************
+   77   40i                     
+   78   41i         0000 0000   PTA    equ   $0000      ;port A
+   79   42i         0000 0001   PTB    equ   $0001      ;port B
+   80   43i         0000 0002   PTC    equ   $0002      ;port C
+   81   44i         0000 0003   PTD    equ   $0003      ;port D
+   82   45i         0000 0008   PTE    equ   $0008      ;port E
+   83   46i         0000 0009   PTF    equ   $0009      ;port F
+   84   47i                     
+   85   48i         0000 0004   DDRA   equ   $0004      ;port A data direction reg.
+   86   49i         0000 0005   DDRB   equ   $0005      ;port B data direction reg.
+   87   50i         0000 0006   DDRC   equ   $0006      ;port C data direction reg.
+   88   51i         0000 0007   DDRD   equ   $0007      ;port D data direction reg.
+   89   52i         0000 000C   DDRE   equ   $000C      ;port E data direction reg.
+   90   53i         0000 000D   DDRF   equ   $000D      ;port F data direction reg.
+   91   54i                     
+   92   55i                     ;PTAPUE   equ   $000D      ;port A pull-up enable
+   93   56i                     ;PTCPUE   equ   $000E      ;port C pull-up enable
+   94   57i                     ;PTDPUE   equ   $000F      ;port D pull-up enable
+   95   58i                     
+   96   59i                     ;***********************
+   97   60i                     ; SPI SECTION
+   98   61i                     ;***********************
+   99   62i                     
+  100   63i         0000 0044   SPCR   equ   $0044      ;SPI ctrl reg
+  101   64i         0000 0045   SPSCR  equ   $0045      ;SPI stat reg
+  102   65i         0000 0046   SPDR   equ   $0046      ;SPI data reg
+  103   66i                     
+  104   67i                     ;***********************
+  105   68i                     ; SCI SECTION
+  106   69i                     ;***********************
+  107   70i                     
+  108   71i         0000 0038   SCC1   equ   $0038      ;SCI ctrl reg 1
+  109   72i         0000 0039   SCC2   equ   $0039      ;SCI ctrl reg 2
+  110   73i         0000 003A   SCC3   equ   $003A      ;SCI ctrl reg 3
+  111   74i         0000 003B   SCS1   equ   $003B      ;SCI stat reg 1
+  112   75i         0000 003C   SCS2   equ   $003C      ;SCI stat reg 2
+  113   76i         0000 003D   SCDR   equ   $003D      ;SCI data reg
+  114   77i         0000 003E   SCBR   equ   $003E      ;SCI baudrate reg
+  115   78i                     
+  116   79i                     
+  117   80i                     ;***********************
+  118   81i                     ; KEYBOARD SECTION
+  119   82i                     ;***********************
+  120   83i                     
+  121   84i         0000 001A   INTKBSCR equ   $001a      ;KBD stat & ctrl reg
+  122   85i         0000 001B   INTKBIER equ   $001b      ;KBD int. enable
+  123   86i                     
+  124   87i                     
+  125   88i                     ;***********************
+  126   89i                     ; TIME BASE SECTION
+  127   90i                     ;***********************
+  128   91i                     
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  129   92i         0000 001C   TBCR     equ   $001c      ;TB ctrl reg
+  130   93i                     
+  131   94i                     
+  132   95i                     ;***********************
+  133   96i                     ; INTERRUPT SECTION
+  134   97i                     ;***********************
+  135   98i                     
+  136   99i         0000 003F   INTSCR   equ   $003f      ;IRQ stat & ctrl reg
+  137  100i                     
+  138  101i                     
+  139  102i                     ;***********************
+  140  103i                     ; CONFIG SECTION
+  141  104i                     ;***********************
+  142  105i                     
+  143  106i         0000 001F   CONFIG   equ   $001f      ;config reg
+  144  107i                     
+  145  108i                     
+  146  109i                     ;***********************
+  147  110i                     ; TIMER #1 SECTION
+  148  111i                     ;***********************
+  149  112i                     
+  150  113i         0000 0020   T1SC     equ   $0020      ;TMR stat & ctrl reg
+  151  114i         0000 0021   T1CNTH   equ   $0021      ;TMR hi
+  152  115i         0000 0022   T1CNTL   equ   $0022      ;TMR lo
+  153  116i         0000 0023   T1MODH   equ   $0023      ;TMR modulo hi
+  154  117i         0000 0024   T1MODL   equ   $0024      ;TMR modulo lo
+  155  118i         0000 0025   T1SC0    equ   $0025      ;TMR ch0 stat & ctrl reg
+  156  119i         0000 0026   T1CH0H   equ   $0026      ;TMC ch0 reg hi
+  157  120i         0000 0027   T1CH0L   equ   $0027      ;TMC ch0 reg lo
+  158  121i         0000 0028   T1SC1    equ   $0028      ;TMR ch1 stat & ctrl reg
+  159  122i         0000 0029   T1CH1H   equ   $0029      ;TMC ch1 reg hi
+  160  123i         0000 002A   T1CH1L   equ   $002a      ;TMC ch1 reg lo
+  161  124i                     
+  162  125i                     ;***********************
+  163  126i                     ; TIMER #2 SECTION
+  164  127i                     ;***********************
+  165  128i                     
+  166  129i         0000 0051   T2SC     equ   $0051      ;TMR stat & ctrl reg
+  167  130i         0000 0052   T2CNTH   equ   $0052      ;TMR hi
+  168  131i         0000 0053   T2CNTL   equ   $0053      ;TMR lo
+  169  132i         0000 0054   T2MODH   equ   $0054      ;TMR modulo hi
+  170  133i         0000 0055   T2MODL   equ   $0055      ;TMR modulo lo
+  171  134i         0000 0056   T2SC0    equ   $0056      ;TMR ch0 stat & ctrl reg
+  172  135i         0000 0057   T2CH0H   equ   $0057      ;TMC ch0 reg hi
+  173  136i         0000 0058   T2CH0L   equ   $0058      ;TMC ch0 reg lo
+  174  137i         0000 0059   T2SC1    equ   $0059      ;TMR ch1 stat & ctrl reg
+  175  138i         0000 005A   T2CH1H   equ   $005A      ;TMC ch1 reg hi
+  176  139i         0000 005B   T2CH1L   equ   $005B      ;TMC ch1 reg lo
+  177  140i                     
+  178  141i                     
+  179  142i                     ;***********************
+  180  143i                     ; CLOCK SECTION
+  181  144i                     ;***********************
+  182  145i                     
+  183  146i         0000 005C   PCTL   equ   $005C      ;PLL ctrl reg
+  184  147i         0000 005D   PBWC   equ   $005D      ;PLL B/W reg
+  185  148i         0000 005E   PPG    equ   $005E      ;PLL programming reg
+  186  149i                     
+  187  150i                     
+  188  151i                     ;***********************
+  189  152i                     ; A/D SECTION
+  190  153i                     ;***********************
+  191  154i                     
+  192  155i         0000 0040   ADSCR  equ   $0040      ;AD ctrl & stat reg
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  193  156i         0000 0041   ADRH   equ   $0041      ;AD data reg
+  194  157i         0000 0042   ADRL   equ   $0042      ;AD data reg
+  195  158i         0000 0043   ADCLK  equ   $0043      ;AD clk reg
+  196  159i                     
+  197  160i                     
+  198  161i                     ;***********************
+  199  162i                     ; TEST, SIM SECTION
+  200  163i                     ;***********************
+  201  164i                     
+  202  165i         0000 FE00   SBSR   equ   $fe00      ;BREAK STATUS REG
+  203  166i         0000 FE01   SRSR   equ   $fe01      ;SIM RESET STAT REG
+  204  167i         0000 FE03   SBFCR  equ   $fe03      ;Break Flag Control Register
+  205  168i                     
+  206  169i         0000 FE0C   BRKH   equ   $fe0c      ;Break Address Registers
+  207  170i         0000 FE0D   BRKL   equ   $fe0d      ;Break Address Registers
+  208  171i         0000 FE0E   BRKSCR equ   $fe0e      ;Break Status & Control Register
+  209  172i                     
+  210  173i                     ;INT1  equ   $fe04      ;Interrupt stat reg 1
+  211  174i                     ;INT2  equ   $fe05      ;Interrupt stat reg 2
+  212  175i                     ;INT3  equ   $fe06      ;Interrupt stat reg 3
+  213  176i                     
+  214  177i                     ;***********************
+  215  178i                     ; FLASH SECTION
+  216  179i                     ;***********************
+  217  180i                     
+  218  181i         0000 FE08   FLCR   equ   $fe08      ;FLASH ctrl reg
+  219  182i                     ;FLBPR equ   $ff7e      ;FLASH blk protection reg
+  220  183i                     
+  221  184i         0000 FE0F   LVISR  equ   $fe0f      ;LVI stat reg
+  222  185i                     
+  223  186i         0000 FFFF   COPCTL equ   $ffff      ;COP ctrl reg
+  224  187i                     
+  225  188i                        ENDIF
+  227   38                      
+  228   39          0000 0001   RCS_ENA       EQU     1           ; READ COMMAND SUPPORTED?
+  229   40                      
+  230   41          0000 0001     IFNE RCS_ENA
+  231   42          0000 0080   RCS           EQU     $80         ; READ COMMAND SUPPORTED
+  232   43                        ELSE
+  234   45                        ENDIF
+  235   46                      
+  236   47          0000 0001   VER_NUM       EQU     1           ; FC protocol version number
+  237   48                      
+  238   49          0000 0080   APLVECT_LEN   EQU     128         ; newly defined length of new (relocated) application vector page
+  239   50                      
+  240   51          0000 0000               IF SIZE = 8
+  253   64                                  ENDIF
+  254   65                                                     
+  255   66          0000 0000               IF SIZE = 16
+  269   80                                    ENDIF
+  270   81                      
+  271   82          0000 0001               IF SIZE = 32
+  272   83                      IDENTS        MACRO
+  273   84                                    DC.B    'MR32',0
+  274   85                                  ENDM
+  275   86                      
+  276   87          0000 0080   ERBLK_LEN     EQU     128
+  277   88          0000 0040   WRBLK_LEN     EQU     64       
+  278   89          0000 8000   FLS_BEG       EQU     $8000       ; this is start of FLASH memory
+  279   90          0000 FC33   FLS_END       EQU     $FC33       ; this is APL_VECT address (also from PRM file)
+  280   91          0000 FFD2   INT_VECT      EQU     $FFD2       ; this is start of real int. vector table
+  281   92                      
+  282   93          0000 8000   FLBPRMASK     EQU     $8000       ; this is CPU specific FLBPR mask 
+  283   94                                                        ; (i.e. bits that are always in the address)
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  284   95                                                          
+  285   96                                    ENDIF
+  286   97                      
+  287   98                      ;*******************************************************************************************
+  288   99                      
+  289  100                                 XDEF   main
+  290  101                                 XDEF   VEC1
+  291  102                                 XDEF   VEC2
+  292  103                                 XDEF   VEC3
+  293  104                                 XDEF   VEC4
+  294  105                                 XDEF   VEC5
+  295  106                                 XDEF   VEC6
+  296  107                                 XDEF   VEC7
+  297  108                                 XDEF   VEC8
+  298  109                                 XDEF   VEC9
+  299  110                                 XDEF   VEC10
+  300  111                                 XDEF   VEC11
+  301  112                                 XDEF   VEC12
+  302  113                                 XDEF   VEC13
+  303  114                                 XDEF   VEC14
+  304  115                                 XDEF   VEC15
+  305  116                                 XDEF   VEC16
+  306  117                                 XDEF   VEC17
+  307  118                                 XDEF   VEC18
+  308  119                                 XDEF   VEC19
+  309  120                                 XDEF   VEC20
+  310  121                                 XDEF   VEC21
+  311  122                                 XDEF   VEC22
+  312  123                      
+  313  124          0000 0002   T1US        EQU       2
+  314  125          0000 000A   T5US        EQU       10
+  315  126          0000 0014   T10US       EQU       20
+  316  127          0000 003C   T30US       EQU       60
+  317  128          0000 0008   T1MS        EQU       8
+  318  129                      
+  319  130          0000 00FF   T100MS      EQU       255
+  320  131                      
+  321  132          0000 0057   WR_DATA     EQU       'W'
+  322  133          0000 0052   RD_DATA     EQU       'R'
+  323  134          0000 0051   ENDPRG      EQU       'Q'
+  324  135          0000 0045   ERASE       EQU       'E'
+  325  136          0000 00FC   ACK         EQU       $FC
+  326  137          0000 0049   IDENT       EQU       'I'
+  327  138                      
+  328  139                      ILOP        MACRO
+  329  140                                  DC.B    $32             ; this is illegal operation code
+  330  141                                  ENDM
+  331  142                      
+  332  143                      ;*******************************************************************************************
+  333  144                      D_MS:   MACRO
+  334  145                              LDA   \1         ; [2] ||
+  335  146                      \@L2:   CLRX             ; [1] ||
+  336  147                      \@L1:   NOP              ; [1] |
+  337  148                              DBNZX   \@L1     ; [3] |    256*4 = 1024T
+  338  149                              DBNZA   \@L2     ; [3] || (1024+4)*(arg-1) + 2 T
+  339  150                              ENDM
+  340  151                      
+  341  152                      D_US:   MACRO
+  342  153                              LDA   \1         ; [2]
+  343  154                      \@L1:   NOP              ; [1]
+  344  155                              DBNZA   \@L1     ; [3] 4*(arg-1) + 2 T
+  345  156                              ENDM
+  346  157                      ;*******************************************************************************************
+  347  158                      MY_ZEROPAGE:   SECTION  SHORT
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  348  159                      
+  349  160   000000             ADRS:    DS.W   1
+  350  161   000002             POM:     DS.B   1
+  351  162   000003             LEN:     DS.B   1
+  352  163   000004             STAT:    DS.B   1
+  353  164   000005             STSRSR:  DS.B   1               ; storage for SRSR reg.
+  354  165   000006             STACK    DS.W   1               ; storage for stack
+  355  166   000008             SOURCE   DS.W   1               ; storage for source address
+  356  167                      
+  357  168   00000A             PRG:     DS.B   $50             ; area for running prg. in zero page
+  358  169                      
+  359  170                      DEFAULT_RAM:    SECTION
+  360  171   000000             DAT:     DS.B   WRBLK_LEN       ; prg. data buffer in high RAM now.
+  361  172                      
+  362  173                      ;*******************************************************************************************
+  363  174                      APL_VECT_ROM:   SECTION
+  364  175                      
+  365  176                      APL_VECT:
+  366  177   000000 0080 0000   PRI:    DC.B    0,$80,0,0,0,0,0,0 ; 8 bytes reserved for bootloader's private use
+             000004 0000 0000  
+  367  178                              
+  368  179   000008 CC xxxx     VEC0:   JMP     VEC0            ; vector 0
+  369  180   00000B CC xxxx     VEC1:   JMP     main            ; vector 1
+  370  181   00000E CC xxxx     VEC2:   JMP     main            ; vector 2
+  371  182   000011 CC xxxx     VEC3:   JMP     main            ; vector 3
+  372  183   000014 CC xxxx     VEC4:   JMP     main            ; vector 4
+  373  184   000017 CC xxxx     VEC5:   JMP     main            ; vector 5
+  374  185   00001A CC xxxx     VEC6:   JMP     main            ; vector 6
+  375  186   00001D CC xxxx     VEC7:   JMP     main            ; vector 7
+  376  187   000020 CC xxxx     VEC8:   JMP     main            ; vector 8
+  377  188   000023 CC xxxx     VEC9:   JMP     main            ; vector 9
+  378  189   000026 CC xxxx     VEC10:  JMP     main            ; vector 10
+  379  190   000029 CC xxxx     VEC11:  JMP     main            ; vector 11
+  380  191   00002C CC xxxx     VEC12:  JMP     main            ; vector 12
+  381  192   00002F CC xxxx     VEC13:  JMP     main            ; vector 13
+  382  193   000032 CC xxxx     VEC14:  JMP     main            ; vector 14
+  383  194   000035 CC xxxx     VEC15:  JMP     main            ; vector 15
+  384  195   000038 CC xxxx     VEC16:  JMP     main            ; vector 16
+  385  196   00003B CC xxxx     VEC17:  JMP     main            ; vector 17
+  386  197   00003E CC xxxx     VEC18:  JMP     main            ; vector 18
+  387  198   000041 CC xxxx     VEC19:  JMP     main            ; vector 19
+  388  199   000044 CC xxxx     VEC20:  JMP     main            ; vector 20
+  389  200   000047 CC xxxx     VEC21:  JMP     main            ; vector 21
+  390  201   00004A CC xxxx     VEC22:  JMP     main            ; vector 22
+  391  202                      
+  392  203                      FLB_PROT_ROM:   SECTION
+  393  204   000000 F9          FLBPR:  DC.B    (FLS_END+APLVECT_LEN-FLBPRMASK)/ERBLK_LEN ; FLASH protection starts MUST CHANGE ACCORING TO MEMORY MAPPING
+  394  205                      DEFAULT_ROM:    SECTION
+  395  206                              
+  396  207                      ID_STRING1:
+  397  208   000000 81                  DC.B   VER_NUM | RCS     ; version number & "Read command supported" flag
+  398  209   000001 8000                DC.W   FLS_BEG           ; START ADDRESS OF FLASH   
+  399  210   000003 FC33                DC.W   FLS_END           ; END ADDRESS OF FLASH   
+  400  211   000005 xxxx                DC.W   APL_VECT          ; POINTER TO APPLICATION VECTOR TABLE
+  401  212   000007 FFD2                DC.W   INT_VECT          ; POINTER TO BEGINING OF FLASH INT. VECTORS
+  402  213   000009 0080                DC.W   ERBLK_LEN         ; ERASE BLCK LENGTH OF FLASH ALG.
+  403  214   00000B 0040                DC.W   WRBLK_LEN         ; WRITE BLCK LENGTH OF FLASH ALG.
+  404  215                      ID_STRING1_END:
+  405  216                      
+  406  217                      ID_STRING2:
+  407  218                         IDENTS
+  408   84m  00000D 4D52 3332  +              DC.B    'MR32',0
+             000011 00         
+  409  219                      ID_STRING2_END:
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  410  220                      
+  411  221                      ;*******************************************************************************************
+  412  222                      main:   
+  413  223   000012 C6 FE01             LDA      SRSR                    ; fetch RESET status reg.
+  414  224   000015 B7 xx               STA      STSRSR                  ; store for later re-use
+  415  225   000017 4D                  TSTA                             ; check is zero (this happens if RESET pulse is too short)
+  416  226   000018 27 07               BEQ      slfprg                  ; if so, jump to self programming                
+  417  227   00001A A4 80               AND      #%10000000              ; mask only POR RESET source      
+  418  228   00001C 26 03               BNE      slfprg
+  419  229   00001E CC xxxx             JMP      VEC0                    ; any of other sources, jump to real application
+  420  230                      
+  421  231   000021 6E 01 1F    slfprg: MOV      #%00000001,CONFIG       ; COP disable, LVI disable
+  422  232                      
+  423  233   000024 6E 80 5D            MOV      #$80,PBWC            ; set Auto Bandwidth Control
+  424  234   000027 1B 5C               BCLR     5,PCTL               ; turn PLL off to be able to program multiplier
+  425  235   000029 6E 87 5E            MOV      #$87,PPG             ; multiply X-tal frequency by 8 => X-tal=4MHz *8 = 32MHz 
+  426  236   00002C 1A 5C               BSET     5,PCTL               ; turn PLL on
+  427  237                                                            ; bus frequency 32MHz/4 = 8MHz, VCO range = 7
+  428  238   00002E 0D 5D FD    LOOP:   BRCLR    6,PBWC,LOOP           ; wait for PLL lock
+  429  239   000031 18 5C               BSET     4,PCTL                  ; use PLL clock
+  430  240                                                    
+  431  241   000033 1C 38               BSET     6,SCC1                 ; SCI enable
+  432  242   000035 6E 0C 39            MOV      #%00001100,SCC2        ; transmit & receive enable
+  433  243   000038 3F 3A               CLR      SCC3
+  434  244   00003A 6E 30 3E            MOV      #%00110000,SCBR        ; 9600Bd @ 8MHz BUS
+  435  245                      
+  436  246   00003D B6 3B               LDA      SCS1
+  437  247   00003F 6E FC 3D            MOV      #ACK,SCDR
+  438  248                      
+  439  249   000042 AE FF               LDX      #T100MS
+  440  250   000044 4F          L2:     CLRA
+  441  251   000045 0A 3B 05    L1:     BRSET    5,SCS1,CAUGHT
+  442  252   000048 4B FB               DBNZA    L1
+  443  253   00004A 5B F8               DBNZX    L2
+  444  254                      
+  445  255                      ;       timeout
+  446  256                      ENDPRG_COM:
+  447  257                              ILOP          ; generate RESET by doing illegal operation
+  448  140m  00004C 32         +            DC.B    $32             ; this is illegal operation code
+  449  258                      
+  450  259                      ;*******************************************************************************************
+  451  260                      CAUGHT:         ; CAUGHT IN SELF-PROGRAMMING?
+  452  261   00004D AD 50               BSR      READ
+  453  262   00004F A1 FC               CMPA     #ACK
+  454  263   000051 26 F9               BNE      ENDPRG_COM
+  455  264                      
+  456  265                      ;*******************************************************************************************
+  457  266                      ; successful return from all write routines
+  458  267                      SUCC:
+  459  268   000053 A6 FC               LDA      #ACK
+  460  269   000055 AD 4E               BSR      WRITE
+  461  270                      
+  462  271                      ;fall thru to background
+  463  272                      ;*******************************************************************************************
+  464  273                      ; BEGIN OF BACKGROUND COMMAND LOOP
+  465  274                      BCKGND:
+  466  275   000057 AD 46               BSR      READ
+  467  276                              
+  468  277   000059 41 45 4F            CBEQA    #ERASE, ERASE_COM       ; Erase command
+  469  278   00005C 41 57 60            CBEQA    #WR_DATA, WR_DATA_COM   ; Write (program) command
+  470  279   00005F 41 49 04            CBEQA    #IDENT, IDENT_COM       ; Ident command
+  471  280          0000 0001         IF RCS_ENA = 1
+  472  281   000062 41 52 28            CBEQA    #RD_DATA, RD_DATA_COM   ; Read command
+  473  282                            ENDIF
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  474  283                      
+  475  284                              ; if no valid command found (including Quit)
+  476  285                              ; generate reset too!
+  477  286                              ILOP          ; generate RESET by doing illegal operation
+  478  140m  000065 32         +            DC.B    $32             ; this is illegal operation code
+  479  287                              
+  480  288                      ;*******************************************************************************************
+  481  289                      IDENT_COM:                      ; TRANSFER OF IDENTIFICATION STRING
+  482  290   000066 6E 0D xx            MOV      #ID_STRING1_END-ID_STRING1, LEN
+  483  291   000069 45 xxxx             LDHX     #ID_STRING1
+  484  292   00006C AD 16               BSR      WRITE_LOOP
+  485  293                      
+  486  294   00006E B6 xx               LDA      STSRSR          ; first byte will be SRSR reg.
+  487  295   000070 AD 33               BSR      WRITE
+  488  296                              
+  489  297   000072 45 xxxx             LDHX     #PRI+1           ; next 7 are from private area
+  490  298   000075 6E 07 xx            MOV      #7,LEN
+  491  299   000078 AD 0A               BSR      WRITE_LOOP
+  492  300                              
+  493  301   00007A 6E 05 xx            MOV      #ID_STRING2_END-ID_STRING2, LEN
+  494  302   00007D 45 xxxx             LDHX     #ID_STRING2
+  495  303   000080 AD 02               BSR      WRITE_LOOP
+  496  304                      
+  497  305   000082 20 D3               BRA      BCKGND          ; finish without ACK
+  498  306                            
+  499  307                      ;*******************************************************************************************
+  500  308                      WRITE_LOOP:                   ; start address in HX, length in LEN
+  501  309   000084 F6                  LDA      ,X
+  502  310   000085 AD 1E               BSR      WRITE
+  503  311   000087 AF 01               AIX      #1
+  504  312   000089 3B xx F8            DBNZ     LEN, WRITE_LOOP
+  505  313   00008C 81                  RTS
+  506  314                      ;*******************************************************************************************
+  507  315          0000 0001         IF RCS_ENA = 1
+  508  316                      RD_DATA_COM:
+  509  317                      
+  510  318   00008D AD 10               BSR      READ
+  511  319   00008F B7 xx               STA      ADRS
+  512  320   000091 AD 0C               BSR      READ
+  513  321   000093 B7 xx               STA      ADRS+1
+  514  322   000095 AD 08               BSR      READ
+  515  323   000097 B7 xx               STA      LEN
+  516  324   000099 55 xx               LDHX     ADRS
+  517  325                              
+  518  326   00009B AD E7               BSR      WRITE_LOOP
+  519  327                      
+  520  328   00009D 20 B8               BRA      BCKGND             ; finish without ACK
+  521  329                            ENDIF
+  522  330                      ;*******************************************************************************************
+  523  331                      READ:
+  524  332   00009F 0B 3B FD            BRCLR    5,SCS1,READ
+  525  333   0000A2 B6 3D               LDA      SCDR
+  526  334   0000A4 81                  RTS
+  527  335                      
+  528  336                      WRITE:   
+  529  337   0000A5 0D 3B FD            BRCLR    6,SCS1,WRITE
+  530  338   0000A8 B7 3D               STA      SCDR
+  531  339   0000AA 81                  RTS
+  532  340                      ;*******************************************************************************************
+  533  341                      ERASE_COM:
+  534  342                      
+  535  343   0000AB AD F2               BSR      READ
+  536  344   0000AD B7 xx               STA      ADRS
+  537  345   0000AF AD EE               BSR      READ
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  538  346   0000B1 B7 xx               STA      ADRS+1
+  539  347                      
+  540  348   0000B3 45 xxxx             LDHX     #ERASE_ALG      ; LOAD ERASE ALGORITHM TO RAM
+  541  349   0000B6 35 xx               STHX     SOURCE
+  542  350   0000B8 6E 33 xx            MOV      #ERASE_ALG_END-ERASE_ALG,STAT
+  543  351                      
+  544  352   0000BB AD 30               BSR      CPY_PRG
+  545  353                              
+  546  354   0000BD BC xx               JMP      PRG            ; ERASE BLOCK 
+  547  355                      ;*******************************************************************************************
+  548  356                      WR_DATA_COM:
+  549  357   0000BF AD DE               BSR      READ
+  550  358   0000C1 B7 xx               STA      ADRS
+  551  359   0000C3 AD DA               BSR      READ
+  552  360   0000C5 B7 xx               STA      ADRS+1
+  553  361   0000C7 AD D6               BSR      READ
+  554  362   0000C9 B7 xx               STA      LEN
+  555  363   0000CB B7 xx               STA      STAT
+  556  364   0000CD 45 xxxx             LDHX     #DAT
+  557  365                      
+  558  366                      WR_DATA_L1:
+  559  367   0000D0 AD CD               BSR      READ
+  560  368   0000D2 F7                  STA      ,X
+  561  369   0000D3 AF 01               AIX      #1
+  562  370   0000D5 3B xx F8            DBNZ     STAT,WR_DATA_L1
+  563  371                                              ; START OF SELF-PROGRAMMING
+  564  372                      WR_BUF:
+  565  373   0000D8 45 xxxx             LDHX     #WR_ALG         ; LOAD WRITE ALGORITHM TO RAM
+  566  374   0000DB 35 xx               STHX     SOURCE
+  567  375   0000DD 6E 45 xx            MOV      #WR_ALG_END-WR_ALG,STAT
+  568  376                      
+  569  377   0000E0 AD 0B               BSR      CPY_PRG
+  570  378   0000E2 95                  TSX
+  571  379   0000E3 35 xx               STHX     STACK           ; copy stack for later re-call
+  572  380   0000E5 BC xx               JMP      PRG   
+  573  381                              
+  574  382   0000E7 55 xx       RETWR:  LDHX     STACK
+  575  383   0000E9 94                  TXS                     ; restore stack
+  576  384                              
+  577  385   0000EA CC xxxx             JMP      SUCC      
+  578  386                      ;*******************************************************************************************
+  579  387                      CPY_PRG:
+  580  388   0000ED 95                  TSX
+  581  389   0000EE 35 xx               STHX     STACK           ; copy stack for later re-call
+  582  390                              
+  583  391   0000F0 55 xx               LDHX     SOURCE          ; LOAD WRITE ALGORITHM TO RAM
+  584  392   0000F2 94                  TXS
+  585  393   0000F3 45 xxxx             LDHX     #PRG
+  586  394                      CPY_PRG_L1:
+  587  395   0000F6 86                  PULA
+  588  396   0000F7 F7                  STA      ,X
+  589  397   0000F8 AF 01               AIX      #1
+  590  398   0000FA 3B xx F9            DBNZ     STAT,CPY_PRG_L1
+  591  399                              
+  592  400   0000FD 55 xx               LDHX     STACK
+  593  401   0000FF 94                  TXS                     ; restore stack
+  594  402   000100 81                  RTS
+  595  403                      ;*******************************************************************************************
+  596  404                      ERASE_ALG:
+  597  405                      
+  598  406   000101 A6 02               LDA      #%00000010   
+  599  407   000103 C7 FE08             STA      FLCR           ; ERASE bit on
+  600  408   000106 C6 xxxx             LDA      FLBPR          ; dummy read FLBPR
+  601  409                      
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  602  410   000109 55 xx               LDHX     ADRS           ; write anything
+  603  411   00010B F7                  STA      ,X             ; to desired range
+  604  412                              D_US     #T10US         ; wait 10us
+  605  153m  00010C A6 14      +        LDA   #T10US         ; [2]
+  606  154m  00010E 9D         +_00004L1:   NOP              ; [1]
+  607  155m  00010F 4B FD      +        DBNZA   _00004L1     ; [3] 4*(arg-1) + 2 T
+  608  413                      
+  609  414   000111 A6 0A               LDA      #%00001010
+  610  415   000113 C7 FE08             STA      FLCR           ; set HVEN, keep ERASE
+  611  416                              D_MS     #T1MS          ; wait 1ms
+  612  145m  000116 A6 08      +        LDA   #T1MS         ; [2] ||
+  613  146m  000118 5F         +_00005L2:   CLRX             ; [1] ||
+  614  147m  000119 9D         +_00005L1:   NOP              ; [1] |
+  615  148m  00011A 5B FD      +        DBNZX   _00005L1     ; [3] |    256*4 = 1024T
+  616  149m  00011C 4B FA      +        DBNZA   _00005L2     ; [3] || (1024+4)*(arg-1) + 2 T
+  617  417                      
+  618  418   00011E A6 08               LDA      #%00001000
+  619  419   000120 C7 FE08             STA      FLCR           ; keep HVEN, ERASE off
+  620  420                              D_US     #T5US          ; wait 5us
+  621  153m  000123 A6 0A      +        LDA   #T5US         ; [2]
+  622  154m  000125 9D         +_00006L1:   NOP              ; [1]
+  623  155m  000126 4B FD      +        DBNZA   _00006L1     ; [3] 4*(arg-1) + 2 T
+  624  421                      
+  625  422   000128 4F                  CLRA
+  626  423   000129 C7 FE08             STA      FLCR           ; HVEN off
+  627  424                              D_US     #T1US          ; wait 1us
+  628  153m  00012C A6 02      +        LDA   #T1US         ; [2]
+  629  154m  00012E 9D         +_00007L1:   NOP              ; [1]
+  630  155m  00012F 4B FD      +        DBNZA   _00007L1     ; [3] 4*(arg-1) + 2 T
+  631  425                             
+  632  426   000131 CC xxxx             JMP      SUCC           ; finish with ACK
+  633  427                      ERASE_ALG_END:
+  634  428                      ;*******************************************************************************************
+  635  429                      WR_ALG:
+  636  430   000134 A6 01               LDA      #%00000001
+  637  431   000136 C7 FE08             STA      FLCR            ; PGM bit on
+  638  432   000139 C6 xxxx             LDA      FLBPR           ; dummy read FLBPR
+  639  433                      
+  640  434   00013C 55 xx               LDHX     ADRS            ; prepare addrs'
+  641  435   00013E F7                  STA      ,X              ; and write to desired range
+  642  436                              D_US     #T10US          ; wait 10us
+  643  153m  00013F A6 14      +        LDA   #T10US         ; [2]
+  644  154m  000141 9D         +_00008L1:   NOP              ; [1]
+  645  155m  000142 4B FD      +        DBNZA   _00008L1     ; [3] 4*(arg-1) + 2 T
+  646  437                      
+  647  438   000144 A6 09               LDA      #%00001001
+  648  439   000146 C7 FE08             STA      FLCR            ; set HVEN, keep PGM
+  649  440                              D_US     #T5US           ; wait 5us
+  650  153m  000149 A6 0A      +        LDA   #T5US         ; [2]
+  651  154m  00014B 9D         +_00009L1:   NOP              ; [1]
+  652  155m  00014C 4B FD      +        DBNZA   _00009L1     ; [3] 4*(arg-1) + 2 T
+  653  441                      
+  654  442   00014E 45 xxxx             LDHX     #DAT            ; prepare addrs'
+  655  443   000151 94                  TXS
+  656  444   000152 55 xx               LDHX     ADRS
+  657  445   000154 4E xx xx            MOV      LEN,POM
+  658  446                      WR_ALG_L1:
+  659  447   000157 86                  PULA
+  660  448   000158 F7                  STA      ,X
+  661  449   000159 AF 01               AIX      #1
+  662  450                              D_US     #T30US          ; wait 30us
+  663  153m  00015B A6 3C      +        LDA   #T30US         ; [2]
+  664  154m  00015D 9D         +_00010L1:   NOP              ; [1]
+  665  155m  00015E 4B FD      +        DBNZA   _00010L1     ; [3] 4*(arg-1) + 2 T
+
+Freescale HC08-Assembler 
+(c) Copyright Freescale 1987-2009
+
+ Abs. Rel.   Loc    Obj. code   Source line
+ ---- ----   ------ ---------   -----------
+  666  451   000160 3B xx F4            DBNZ     POM,WR_ALG_L1   ; copy desired block of data
+  667  452                             
+  668  453   000163 A6 08               LDA      #%00001000
+  669  454   000165 C7 FE08             STA      FLCR            ; keep HVEN, PGM off
+  670  455                              D_US     #T5US           ; wait 5us
+  671  153m  000168 A6 0A      +        LDA   #T5US         ; [2]
+  672  154m  00016A 9D         +_00011L1:   NOP              ; [1]
+  673  155m  00016B 4B FD      +        DBNZA   _00011L1     ; [3] 4*(arg-1) + 2 T
+  674  456                      
+  675  457   00016D 4F                  CLRA
+  676  458   00016E C7 FE08             STA      FLCR            ; HVEN off
+  677  459                              D_US     #T1US           ; wait 1us
+  678  153m  000171 A6 02      +        LDA   #T1US         ; [2]
+  679  154m  000173 9D         +_00012L1:   NOP              ; [1]
+  680  155m  000174 4B FD      +        DBNZA   _00012L1     ; [3] 4*(arg-1) + 2 T
+  681  460                             
+  682  461   000176 CC xxxx             JMP      RETWR           ; finish with ACK (& restore STACK before)
+  683  462                      WR_ALG_END:
+  684  463                      ;*******************************************************************************************
+  685  464                      END            

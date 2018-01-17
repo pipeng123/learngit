@@ -1,0 +1,58 @@
+/***********************************************************************
+*  HEADER_START
+*
+*  	   $File Name: mc9s08dz128.prm$
+*      Project:        Developper's HC08 Bootloader Slave
+*      Description:    DZ128 link parameter file
+*      Platform:       HCS08
+*      $Version: 9.0.2.0$
+*      $Date: Sep-11-2012$ 
+*      $Last Modified By: r30323$
+*      Company:        Freescale Semiconductor
+*      Security:       General Business
+*
+*  ===================================================================
+*  Copyright (c):      Freescale Semiconductor, 2008, All rights reserved.
+*
+*  ===================================================================
+*  THIS SOFTWARE IS PROVIDED BY FREESCALE "AS IS" AND ANY
+*  EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+*  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+*  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL FREESCALE OR
+*  ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+*  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+*  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+*  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+*  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+*  OF THE POSSIBILITY OF SUCH DAMAGE.
+*  ===================================================================
+*
+*  HEADER_END
+*/
+
+ENTRIES 
+   MY_NVPROT MY_NVOPT  
+END
+
+NAMES END /* CodeWarrior will pass all the needed files to the linker by command line. But here you may add your own files too. */
+
+SECTIONS /* here all RAM/ROM areas of the device are listed. Used in PLACEMENT below. */
+  Z_RAM  = READ_WRITE 0x0080 TO 0x00FF; 
+  RAM    = READ_WRITE 0x0100 TO 0x17FF;
+  ROM    = READ_ONLY  0xE000 TO 0xFF8F;
+  NVPROTROM = READ_ONLY 0xFFBD TO 0xFFBD;
+  NVOPTROM  = READ_ONLY 0xFFBF TO 0xFFBF;
+END
+
+PLACEMENT /* here all predefined and user segments are placed into the SECTIONS defined above. */
+  NVPROT_ROM					INTO NVPROTROM;
+  NVOPT_ROM						INTO NVOPTROM;
+  DEFAULT_ROM                   INTO ROM;
+  DEFAULT_RAM                   INTO RAM;
+  _DATA_ZEROPAGE, MY_ZEROPAGE   INTO Z_RAM;
+END
+
+VECTOR 0 main 
+INIT main
