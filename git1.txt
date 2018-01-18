@@ -1,4 +1,4 @@
 new git
 third mend!
 branch test
-master
+feature1
